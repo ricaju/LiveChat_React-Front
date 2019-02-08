@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Username from '../components/Username';
-import Email from '../components/Email';
-import Password from '../components/Password';
-import ConfirmPassword from '../components/ConfirmPassword';
-import SubmitButton from '../components/SubmitButton';
+import {Button} from 'reactstrap';
+import {Form, FormGroup, Label, Input} from 'reactstrap';
 
 class App extends Component {
   constructor(props){
@@ -24,6 +21,7 @@ class App extends Component {
   }
 
   handleSubmit = (e) => {
+    e.prevetDefault();
     console.log('dodali smo username:' + this.state.username.value);
     
   }
@@ -35,11 +33,52 @@ class App extends Component {
         <div className="columns">
           <div className="col-md-12 centered bg-green" style={{height: '600px', width: '300px'}}>
             <h3 className="tc">Registration</h3>
-            <Username username={this.handleChange}/>
-            <Email/>
-            <Password/>
-            <ConfirmPassword/>
-            <SubmitButton onClick={ () => this.handleSubmit} />
+            <Form onSubmit={this.handleSubmit}>
+                <FormGroup>
+                  <Label htmlFor="username">Username</Label>
+                  <Input 
+                  type="text" 
+                  name="username" 
+                  id="username" 
+                  placeholder="Type your username"
+                  onChange = {this.handleChange}  />
+                </FormGroup>
+                <FormGroup>
+                  <Label htmlFor="email">Email</Label>
+                  <Input 
+                  type="email" 
+                  name="email" 
+                  id="email" 
+                  placeholder="Enter your email"
+                  onChange = {this.handleChange}
+                   />
+                </FormGroup>
+                <FormGroup>
+                  <Label htmlFor="password"> Password </Label>
+                  <Input 
+                  type="password" 
+                  name="password" 
+                  id="password" 
+                  placeholder="Enter your password"
+                  onChange = {this.handleChange}
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <Label htmlFor="password"> Confirm Password </Label>
+                  <Input 
+                  type="password" 
+                  name="confirmPassword" 
+                  id="password1" 
+                  placeholder="Confirm your password"
+                  onChange = {this.handleChange}
+                  />
+                </FormGroup>
+                <Button type="submit" 
+                  name="submit" 
+                  id="button" 
+                  color="primary"
+                  >Submit</Button>
+            </Form>
           </div>
         </div>
       </div>
