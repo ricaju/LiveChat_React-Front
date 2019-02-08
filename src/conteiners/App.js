@@ -41,7 +41,8 @@ class App extends Component {
                   name="username" 
                   id="username" 
                   placeholder="Type your username"
-                  onChange = {this.handleChange}  />
+                  value={this.state.username}
+                  onChange = {e => this.handleChange(e)}  />
                 </FormGroup>
                 <FormGroup>
                   <Label htmlFor="email">Email</Label>
@@ -50,7 +51,8 @@ class App extends Component {
                   name="email" 
                   id="email" 
                   placeholder="Enter your email"
-                  onChange = {this.handleChange}
+                  value={this.state.email}
+                  onChange = {e => this.handleChange(e)}
                   />
                 </FormGroup>
                 <FormGroup>
@@ -60,7 +62,8 @@ class App extends Component {
                   name="password" 
                   id="password" 
                   placeholder="Enter your password"
-                  onChange = {this.handleChange}
+                  value={this.state.password}
+                  onChange = {e => this.handleChange(e)}
                   />
                 </FormGroup>
                 <FormGroup>
@@ -70,7 +73,8 @@ class App extends Component {
                   name="confirmPassword" 
                   id="password1" 
                   placeholder="Confirm your password"
-                  onChange = {this.handleChange}
+                  value={this.state.confirmPassword}
+                  onChange = {e => this.handleChange(e)}
                   />
                 </FormGroup>
                 <Button type="submit" 
