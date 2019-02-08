@@ -22,7 +22,7 @@ class App extends Component {
 
   handleSubmit = (e) => {
     e.prevetDefault();
-    console.log('dodali smo username:' + this.state.username.value);
+    console.log('dodali smo username:' + this.state.username.value); //test
     
   }
 
@@ -51,7 +51,7 @@ class App extends Component {
                   id="email" 
                   placeholder="Enter your email"
                   onChange = {this.handleChange}
-                   />
+                  />
                 </FormGroup>
                 <FormGroup>
                   <Label htmlFor="password"> Password </Label>
