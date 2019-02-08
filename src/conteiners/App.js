@@ -3,6 +3,15 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button} from 'reactstrap';
 import {Form, FormGroup, Label, Input} from 'reactstrap';
 
+const formValid = formErrors => {
+  let valid = true;
+  Object.values(formErrors).forEach(val => {
+    val.length > 0 && (valid = false);  //ako ima vise od nule znaci da ima errora
+  });
+  return valid;
+}
+
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -10,7 +19,12 @@ class App extends Component {
       username: "",
       email: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
+      formErrors: {
+        usernameErr: "",
+        emailErr: "",
+        passwordErr: ""
+      }
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,13 +32,30 @@ class App extends Component {
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
+    let formErrors = this.state.formErrors;
+
+    switch (username) {
+      case 'username':
+        formErrors.usernameErr = value.length < 4 && value.length > 0 ? 'minimu 4 characters reqired' : ""; //usernmae mora imati vise od 4 slova
+        break;
+      case 'password':
+        formErrors.passwordErr = value.length < 6 && value.length > 0 ? 'password need to have more than 6 characters' : "";
+         //pass mora imati vise od 6 znakova
+     }
+     this.setState({ formErrors, [name]: value}, () => console.log(this.state))
   }
 
   handleSubmit = (e) => {
     e.prevetDefault();
-    console.log('dodali smo username:' + this.state.username.value); //test
-    
+
+    if(formValid(this.state.formErrors)){
+      console.log('dodali smo username:' + this.state.username); //test
+    }else {
+      console.log('error');
+    }  
   }
+
+
 
 
   render() {
