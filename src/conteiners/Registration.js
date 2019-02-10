@@ -11,20 +11,51 @@ class Registration extends Component {
       email: "",
       password: "",
       confirmPassword: "",
-    }
+      usernameValid: "",      // za validaciju unosa
+      emailValid: "",
+      passwordValid: "",
+      confirmPasswordValid:"",
+     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  };
+
+  checkValid = () => {
+  	let usernameValid = "";
+  	//let emailValid = ""; // ostaviti JSX "type='email' validaciju?
+  	let passwordValid = "";
+  	let confirmPasswordValid = "";
+
+  	if(!this.state.username) {
+  		usernameValid = "Username cant be empty";
+  	}
+  	if(this.state.password < 5) {
+  		passwordValid = "Password needs to have more than 5 characters";
+  	}
+
+  	if(this.state.password !== this.state.confirmPassword) {
+  		confirmPasswordValid = "Password and confirm password don't match!";
+  	}
+
+ 	if (usernameValid || passwordValid || confirmPasswordValid) {   //setstejtanje upozorenja
+ 		this.setState({ usernameValid, passwordValid, confirmPasswordValid });
+ 		return false;
+ 	}
   }
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
-  }
+  };
 
-  handleSubmit = (e) => {
-    e.prevetDefault();
-    console.log('dodali smo username:' + this.state.username.value); //test
-    
-  }
+  handleSubmit = (e) => {    
+    e.preventDefault();
+    const check = this.checkValid();    
+    if(!check) {
+    	console.log("jedna od formi je prazna"); //test    
+    }
+    console.log('dodali smo username:' + this.state.username); //test 
+  };
+
 
 
   render() {
@@ -33,7 +64,7 @@ class Registration extends Component {
         <div className="columns">
           <div className="col-md-12 centered bg-green" style={{height: '600px', width: '300px'}}>
             <h3 className="tc">Registration</h3>
-            <Form onSubmit={this.handleSubmit}>
+            <Form onSubmit={e => this.handleSubmit(e)}>
                 <FormGroup>
                   <Label htmlFor="username">Username</Label>
                   <Input 
@@ -43,6 +74,7 @@ class Registration extends Component {
                   placeholder="Type your username"
                   value={this.state.username}
                   onChange = {e => this.handleChange(e)}  />
+                  <div style={{color: "red"}}> {this.state.usernameValid} </div>
                 </FormGroup>
                 <FormGroup>
                   <Label htmlFor="email">Email</Label>
@@ -63,8 +95,8 @@ class Registration extends Component {
                   id="password" 
                   placeholder="Enter your password"
                   value={this.state.password}
-                  onChange = {e => this.handleChange(e)}
-                  />
+                  onChange = {e => this.handleChange(e)} />
+                  <div style={{color: "red"}}> {this.state.passwordValid} </div>
                 </FormGroup>
                 <FormGroup>
                   <Label htmlFor="password"> Confirm Password </Label>
@@ -76,6 +108,7 @@ class Registration extends Component {
                   value={this.state.confirmPassword}
                   onChange = {e => this.handleChange(e)}
                   />
+                  <div style={{color: "red"}}> {this.state.confirmPasswordValid} </div>
                 </FormGroup>
                 <Button type="submit" 
                   name="submit" 

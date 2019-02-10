@@ -7,7 +7,9 @@ class Login extends Component {
 	this.state = {
 		username: '',
 		password: ''
-	};
+	}
+	this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 	};
 
 	handleChange = (e) => {
