@@ -29,7 +29,7 @@ class Registration extends Component {
   	if(!this.state.username) {
   		usernameValid = "Username cant be empty";
   	}
-  	if(this.state.password < 5) {
+  	if(this.state.password.length < 5) {
   		passwordValid = "Password needs to have more than 5 characters";
   	}
 
