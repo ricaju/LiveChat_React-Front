@@ -1,0 +1,20 @@
+#bc-form{
+	background-color: rgba(0,0,0,0.4);
+	border-radius: 10%;
+}
+#button{
+	background-color: transparent;
+	border: 2px solid #168664;
+	border-radius: 45%;
+	color: #168664;
+	font-weight: bold;
+	font-size: 20px;
+	position: relative;
+	left: 100px;
+	top: 40px;
+}
+#button:hover {
+	background-color: black;
+	color: #168664;
+
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button} from 'reactstrap';
 import {Form, FormGroup, Label, Input} from 'reactstrap';
+import './Registration.css';
 
 class Registration extends Component {
   constructor(props){
@@ -62,11 +63,11 @@ class Registration extends Component {
     return (
       <div className="container" style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}> {/*staviti u css?*/}
         <div className="columns">
-          <div className="col-md-12 centered bg-green" style={{height: '600px', width: '300px'}}>
-            <h3 className="tc">Registration</h3>
+          <div className="col-md-12 centered" id='bc-form' style={{height: '600px', width: '350px'}}>
+            <h3 className="tl pa3 white">Registration</h3>
             <Form onSubmit={e => this.handleSubmit(e)}>
                 <FormGroup>
-                  <Label htmlFor="username">Username</Label>
+                  <Label className= 'white' htmlFor="username">Username</Label>
                   <Input 
                   type="text" 
                   name="username" 
@@ -77,7 +78,7 @@ class Registration extends Component {
                   <div style={{color: "red"}}> {this.state.usernameValid} </div>
                 </FormGroup>
                 <FormGroup>
-                  <Label htmlFor="email">Email</Label>
+                  <Label className= 'white' htmlFor="email">Email</Label>
                   <Input 
                   type="email" 
                   name="email" 
@@ -88,7 +89,7 @@ class Registration extends Component {
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label htmlFor="password"> Password </Label>
+                  <Label className= 'white' htmlFor="password"> Password </Label>
                   <Input 
                   type="password" 
                   name="password" 
@@ -99,7 +100,7 @@ class Registration extends Component {
                   <div style={{color: "red"}}> {this.state.passwordValid} </div>
                 </FormGroup>
                 <FormGroup>
-                  <Label htmlFor="password"> Confirm Password </Label>
+                  <Label className= 'white' htmlFor="password"> Confirm Password </Label>
                   <Input 
                   type="password" 
                   name="confirmPassword" 
