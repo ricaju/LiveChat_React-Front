@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import axios from 'axios';
 
 class Login extends Component {
 	constructor(props) {
@@ -18,6 +19,10 @@ class Login extends Component {
 
 	handleSubmit = (e) => {
 	  e.preventDefault();
+    axios.post('/getToken', {   //token
+      email: this.state.username,
+      password: this.state.password
+    }).then(res => localStorage.setItem('MP-jwt', res.data)); //MP = "moj prvi :)"
 	};
 
 	render() {

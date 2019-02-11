@@ -12,7 +12,7 @@ class Registration extends Component {
       email: "",
       password: "",
       confirmPassword: "",
-      usernameValid: "",      // za validaciju unosa
+      usernameValid: "",      // za validaciju unosa 
       emailValid: "",
       passwordValid: "",
       confirmPasswordValid:"",

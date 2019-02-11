@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Particles from 'react-particles-js';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Login from './Login';
-import Registration from './Registration';
+import Login from '../component/Login';
+import Registration from '../component/Registration';
 import './App.css';
 
 const particleOptions= {  
@@ -23,13 +23,14 @@ class App extends Component {
     return(
       <div className="container">
       <Particles className='particles' params={particleOptions} />
-      <div>
         <Router>
           <div className="conteiner">
             <ul>
               <li><Link to="/Login">Login</Link></li>
               <li><Link to="/Registration">Registration</Link></li>
             </ul>
+
+
 
           <Route path="/Login" component={Login} />
           <Route path="/Registration" component={Registration} />
@@ -38,7 +39,6 @@ class App extends Component {
 
           </div>
         </Router>
-      </div>
       </div>
       )
     }
