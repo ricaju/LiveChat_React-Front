@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button} from 'reactstrap';
 import {Form, FormGroup, Label, Input} from 'reactstrap';
 import './Registration.css';
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
 
 class Registration extends Component {
   constructor(props){
@@ -55,6 +57,10 @@ class Registration extends Component {
     	console.log("jedna od formi je prazna"); //test    
     }
     console.log('dodali smo username:' + this.state.username); //test 
+
+    this.props.mutate({        //slanje za bazu
+      variables: this.state,
+    });
   };
 
 
@@ -125,4 +131,10 @@ class Registration extends Component {
 }
 
 
-export default Registration;
+const RegistrationMutation = gql`
+  mutation($username: String!, $emial: String!, $password: String!) {
+    user(username: $username, email: $email, password: $password)
+  }
+`;
+
+export default graphql(RegistrationMutation)(Registration);

@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Particles from 'react-particles-js';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
 import Login from '../component/Login';
 import Registration from '../component/Registration';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Particles from 'react-particles-js';
+
+const client = new ApolloClient({
+  uri: "https://localhost:3000"
+});
+
 
 const particleOptions= {  
       particles: {
@@ -21,6 +28,7 @@ const particleOptions= {
 class App extends Component {
   render() {
     return(
+      <ApolloProvider client={client}>
       <div className="container">
       <Particles className='particles' params={particleOptions} />
         <Router>
@@ -40,6 +48,7 @@ class App extends Component {
           </div>
         </Router>
       </div>
+      </ApolloProvider>
       )
     }
 }
