@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button} from 'reactstrap';
 import {Form, FormGroup, Label, Input} from 'reactstrap';
 import './Registration.css';
@@ -17,8 +16,6 @@ class Registration extends Component {
       passwordValid: "",
       confirmPasswordValid:"",
      }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   };
 
   checkValid = () => {
@@ -61,10 +58,10 @@ class Registration extends Component {
 
   render() {
     return (
-      <div className="container" style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}> {/*staviti u css?*/}
+      <div className="container" id= 'reg-info'> 
         <div className="columns">
-          <div className="col-md-12 centered" id='bc-form' style={{height: '600px', width: '350px'}}>
-            <h3 className="tl pa3 white">Registration</h3>
+          <div className="col-md-12" id='bc-form'>
+          {/*<h3 className="tl pa3 white">Registration</h3>*/}
             <Form onSubmit={e => this.handleSubmit(e)}>
                 <FormGroup>
                   <Label className= 'white' htmlFor="username">Username</Label>
