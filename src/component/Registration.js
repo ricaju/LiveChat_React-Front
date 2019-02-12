@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button} from 'reactstrap';
 import {Form, FormGroup, Label, Input} from 'reactstrap';
 import './Registration.css';
@@ -17,8 +16,6 @@ class Registration extends Component {
       passwordValid: "",
       confirmPasswordValid:"",
      }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   };
 
   checkValid = () => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Particles from 'react-particles-js';
-import { BrowserRouter as Router, Route, } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Login from '../component/Login';
 import Registration from '../component/Registration';
 import './App.css';
