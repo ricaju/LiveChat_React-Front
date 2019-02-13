@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {Button} from 'reactstrap';
-import {Form, FormGroup, Label, Input} from 'reactstrap';
+import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import './Registration.css';
 
 class Registration extends Component {
