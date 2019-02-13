@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import './Registration.css';
 
+
 class Registration extends Component {
   constructor(props){
     super(props);
@@ -57,10 +58,10 @@ class Registration extends Component {
 
   render() {
     return (
-      <div className="container" id= 'reg-info'> 
-        <div className="columns">
-          <div className="col-md-12" id='bc-form'>
-          {/*<h3 className="tl pa3 white">Registration</h3>*/}
+      
+     /* <div className="container" id= 'reg-info'>           
+        <div className="columns">   */       
+          <div className="col-md-10" id='bc-reg'>
             <Form onSubmit={e => this.handleSubmit(e)}>
                 <FormGroup>
                   <Label className= 'white' htmlFor="username">Username</Label>
@@ -109,13 +110,15 @@ class Registration extends Component {
                 </FormGroup>
                 <Button type="submit" 
                   name="submit" 
-                  id="button" 
-                  color="primary"
+                  id="button"                   
                   >Submit</Button>
             </Form>
+
           </div>
-        </div>
-      </div>
+        
+
+      /*</div>
+      </div>*/
     );
   }
 }

@@ -5,7 +5,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Login from '../component/Login';
 import Registration from '../component/Registration';
 import './App.css';
+import Logo from '../component/Logo/Logo.js';
 import { Container, Row, Col, Button } from 'reactstrap';
+
 
 const particleOptions= {  
       particles: {
@@ -15,6 +17,9 @@ const particleOptions= {
             enable: true,
             value_area: 1000
           }
+        },
+        "color": {
+          "value": "random"
         }
       }
     }
@@ -44,17 +49,22 @@ class App extends Component {
     return(
       <div>
       <Particles className='particles' params={particleOptions} />
+      
         <Router>
-          <Container>
+          <Container >
             <Row>
-              <Col xs="6"> Prvi Kontejner </Col>
-              <Col xs="6">
-              <Button className="float-right" onClick={this.handeLog}>Login</Button>
-              {this.state.login ? <Login/> : null}
-              <Button className="float-left" onClick={this.handleReg}>Registration</Button>
-              {this.state.registration ? <Registration/> : null}
+              <Col xs="6"> <Logo/> </Col>
+
+              <Col xs="6" >
+              <Row className="red">
+              <Button id='login' onClick={this.handeLog}>Login</Button>
+              <Button id='registration' onClick={this.handleReg}>Registration</Button>
+                {this.state.login ? <Login/> : null}             
+                {this.state.registration ? <Registration/> : null}
+                </Row>
               </Col>
-            </Row>
+            </Row> 
+          
 
 
 

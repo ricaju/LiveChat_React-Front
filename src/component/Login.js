@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import {Form, FormGroup, Label, Input, Button} from 'reactstrap'; 
 import axios from 'axios';
+import './Login.css';
+import Logo from './Logo/Logo.js';
 
 class Login extends Component {
 	constructor(props) {
@@ -23,7 +25,7 @@ class Login extends Component {
     }).then(res => sessionStorage.setItem('MP-jwt', res.data)); //MP = "moj prvi :)"
 	};
 
-	render() {
+   render() {
     return (
       <div className="Login">
       <div className="col-md-10" id='bc-login'>
@@ -38,13 +40,17 @@ class Login extends Component {
                 value={this.state.username}
                 onChange = {e => this.handleChange(e)} />
           </FormGroup>
-          <FormGroup controlId="password" size="large">
-            <FormLabel>Password</FormLabel>
-            <FormControl
-              type="password"        //value?
-              onChange={e => this.handleChange(e)}
-            />
+          <FormGroup>
+            <Label className= 'white' htmlFor="password">Password</Label>
+              <Input 
+                type="password" 
+                name="password" 
+                id="password" 
+                placeholder="Type your password"
+                value={this.state.password}
+                onChange = {e => this.handleChange(e)} />
           </FormGroup>
+<<<<<<< HEAD
           <Button
             block
             size="large"
@@ -54,6 +60,15 @@ class Login extends Component {
           </Button>
         </form>
 <<<<<<< HEAD
+=======
+          <Button 
+            type="submit" 
+            name="submit" 
+            id="button" 
+            color="primary"
+            >Login </Button>
+        </Form>
+>>>>>>> parent of 71ac842... vracanje
       </div>
 =======
 >>>>>>> parent of a282da6... version 1.1
@@ -61,6 +76,5 @@ class Login extends Component {
     );
   }
 }
-
 
 export default Login;
