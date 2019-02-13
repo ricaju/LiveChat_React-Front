@@ -44,6 +44,9 @@ class Login extends Component {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of ca6b9ed... Revert "aaa"
 =======
 >>>>>>> parent of ca6b9ed... Revert "aaa"
       <div className="col-md-10" id='bc-login'>
@@ -101,6 +104,7 @@ class Login extends Component {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
@@ -122,6 +126,11 @@ class Login extends Component {
 >>>>>>> parent of a282da6... version 1.1
 =======
 >>>>>>> parent of a282da6... version 1.1
+=======
+      </div>
+=======
+>>>>>>> parent of a282da6... version 1.1
+>>>>>>> parent of ca6b9ed... Revert "aaa"
       </div>
     );
   }
