@@ -39,6 +39,9 @@ class Login extends Component {
     return (
       <div className="Login">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of ca6b9ed... Revert "aaa"
       <div className="col-md-10" id='bc-login'>
         <Form onSubmit={e => this.handleSubmit(e)}>
           <FormGroup>
@@ -84,6 +87,7 @@ class Login extends Component {
         </form>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
@@ -98,6 +102,8 @@ class Login extends Component {
 >>>>>>> parent of 8ffd2f5... ccccc
 =======
 >>>>>>> parent of 6dff0b3... bbb
+=======
+>>>>>>> parent of ca6b9ed... Revert "aaa"
       </div>
 =======
 >>>>>>> parent of a282da6... version 1.1
