@@ -6,6 +6,12 @@ import Login from '../component/Login';
 import Registration from '../component/Registration';
 import './App.css';
 import { Container, Row, Col, Button } from 'reactstrap';
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
+
+const client = new ApolloClient({
+  uri: "localhost:4000"
+});
 
 const particleOptions= {  
       particles: {
@@ -43,6 +49,7 @@ class App extends Component {
   render() {
     return(
       <div>
+      <ApolloProvider client={client}>
       <Particles className='particles' params={particleOptions} />
           <Container>
             <Row>
@@ -58,8 +65,9 @@ class App extends Component {
 
 
           </Container>
+        </ApolloProvider>
       </div>
-      )
+      );
     }
 }
 

@@ -132,7 +132,7 @@ class Registration extends Component {
   }
 }
 
-/*const registerMutation = gql`
+const registerMutation = gql`
   mutation
   CreateCheckout($storeusername: String!, $storepassword: String!, $storeemail: String!,$properties:CheckoutInput) {
     createCheckout(storeusername : $username, storepassword : $password, storeemail : $email,properties:$properties) {
@@ -141,5 +141,5 @@ class Registration extends Component {
     }
   }
 `;
-*/
-export default Registration;
+
+export default graphql(registerMutation)(Registration);
