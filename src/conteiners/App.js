@@ -44,7 +44,6 @@ class App extends Component {
     return(
       <div>
       <Particles className='particles' params={particleOptions} />
-        <Router>
           <Container>
             <Row>
               <Col xs="6"> Prvi Kontejner </Col>
@@ -59,7 +58,6 @@ class App extends Component {
 
 
           </Container>
-        </Router>
       </div>
       )
     }
