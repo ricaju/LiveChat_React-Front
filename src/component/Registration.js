@@ -133,11 +133,10 @@ class Registration extends Component {
 }
 
 const registerMutation = gql`
-  mutation
-  CreateCheckout($storeusername: String!, $storepassword: String!, $storeemail: String!,$properties:CheckoutInput) {
-    createCheckout(storeusername : $username, storepassword : $password, storeemail : $email,properties:$properties) {
-      checkouttoken
-      checkout{ username, password, email}
+  mutation($username: String!, $password: String!, $email: String!) {
+    register(username : $username, password : $password, email : $email) {
+      token
+     
     }
   }
 `;

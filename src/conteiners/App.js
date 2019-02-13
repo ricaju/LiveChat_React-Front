@@ -11,7 +11,7 @@ import { ApolloProvider } from "react-apollo";
 import cors from 'cors';
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphiql"
+  uri: "http://localhost:4000/graphql"
 });
 
 const particleOptions= {  
