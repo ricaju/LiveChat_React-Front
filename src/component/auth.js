@@ -15,7 +15,7 @@ class Auth extends Component {            //pomocu ove komponente cemo provjerav
 
 	componentDidMount() {
 		const jwt = getJWTtoken();
-		if(!jwt) {                  // ako nemamo JWT znaci da nismo logirani
+		if(!jwt) {                  // ako nemamo JWT znaci da nismo logirani, maknuti token iz sessiona?
 			this.props.history.push('/Login')
 		}
 
