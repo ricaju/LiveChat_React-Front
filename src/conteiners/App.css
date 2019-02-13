@@ -6,3 +6,20 @@
 	bottom: 0;
 	z-index: -1;
 }
+
+.red{
+	display: flex;
+	justify-content: center;
+	margin-top: 5vh;
+	
+
+}
+
+#login{
+	background-color: transparent;
+	width: 20%;
+}
+
+#registration{
+	background-color: transparent;
+}
