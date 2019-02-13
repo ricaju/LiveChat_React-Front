@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap'; 
 import axios from 'axios';
 import './Login.css';
-import Logo from './Logo/Logo.js';
+import Logo from '../component/Logo/Logo.js';
 
 class Login extends Component {
 	constructor(props) {
@@ -50,17 +50,6 @@ class Login extends Component {
                 value={this.state.password}
                 onChange = {e => this.handleChange(e)} />
           </FormGroup>
-<<<<<<< HEAD
-          <Button
-            block
-            size="large"
-            type="submit"
-          >
-            Login
-          </Button>
-        </form>
-<<<<<<< HEAD
-=======
           <Button 
             type="submit" 
             name="submit" 
@@ -68,10 +57,7 @@ class Login extends Component {
             color="primary"
             >Login </Button>
         </Form>
->>>>>>> parent of 71ac842... vracanje
       </div>
-=======
->>>>>>> parent of a282da6... version 1.1
       </div>
     );
   }
