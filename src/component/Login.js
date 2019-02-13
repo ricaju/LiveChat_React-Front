@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import {Form, FormGroup, Label, Input, Button} from 'reactstrap'; 
+import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import axios from 'axios';
+<<<<<<< HEAD
 import './Login.css';
 import Logo from '../component/Logo/Logo.js';
+=======
+>>>>>>> parent of a282da6... version 1.1
 
 class Login extends Component {
 	constructor(props) {
@@ -25,9 +28,10 @@ class Login extends Component {
     }).then(res => sessionStorage.setItem('MP-jwt', res.data)); //MP = "moj prvi :)"
 	};
 
-   render() {
+	render() {
     return (
       <div className="Login">
+<<<<<<< HEAD
       <div className="col-md-10" id='bc-login'>
         <Form onSubmit={e => this.handleSubmit(e)}>
           <FormGroup>
@@ -39,28 +43,36 @@ class Login extends Component {
                 placeholder="Type your username"
                 value={this.state.username}
                 onChange = {e => this.handleChange(e)} />
+=======
+        <form onSubmit={this.handleSubmit}>
+          <FormGroup controlId="username" size="large">
+            <FormLabel>Username</FormLabel>
+            <FormControl
+              type="username"
+              onChange={e => this.handleChange(e)}
+            />
+>>>>>>> parent of a282da6... version 1.1
           </FormGroup>
-          <FormGroup>
-            <Label className= 'white' htmlFor="password">Password</Label>
-              <Input 
-                type="password" 
-                name="password" 
-                id="password" 
-                placeholder="Type your password"
-                value={this.state.password}
-                onChange = {e => this.handleChange(e)} />
+          <FormGroup controlId="password" size="large">
+            <FormLabel>Password</FormLabel>
+            <FormControl
+              type="password"        //value?
+              onChange={e => this.handleChange(e)}
+            />
           </FormGroup>
-          <Button 
-            type="submit" 
-            name="submit" 
-            id="button" 
-            color="primary"
-            >Login </Button>
-        </Form>
+          <Button
+            block
+            size="large"
+            type="submit"
+          >
+            Login
+          </Button>
+        </form>
       </div>
       </div>
     );
   }
 }
+
 
 export default Login;
