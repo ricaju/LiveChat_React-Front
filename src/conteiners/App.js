@@ -8,9 +8,10 @@ import './App.css';
 import { Container, Row, Col, Button } from 'reactstrap';
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
+import cors from 'cors';
 
 const client = new ApolloClient({
-  uri: "localhost:4000"
+  uri: "http://localhost:4000/graphiql"
 });
 
 const particleOptions= {  
