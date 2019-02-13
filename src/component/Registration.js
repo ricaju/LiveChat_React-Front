@@ -52,6 +52,7 @@ class Registration extends Component {
 
   handleSubmit = (e) => {    
     e.preventDefault();
+    
     const check = this.checkValid();    
     if(!check) {
     	console.log("jedna od formi je prazna"); //test    
