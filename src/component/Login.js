@@ -3,9 +3,13 @@ import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import axios from 'axios';
 <<<<<<< HEAD
 import './Login.css';
+<<<<<<< HEAD
 import Logo from '../component/Logo/Logo.js';
 =======
 >>>>>>> parent of a282da6... version 1.1
+=======
+import Logo from './Logo/Logo.js';
+>>>>>>> parent of 8ffd2f5... ccccc
 
 class Login extends Component {
 	constructor(props) {
@@ -60,6 +64,10 @@ class Login extends Component {
               onChange={e => this.handleChange(e)}
             />
           </FormGroup>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> parent of 8ffd2f5... ccccc
           <Button
             block
             size="large"
@@ -68,7 +76,22 @@ class Login extends Component {
             Login
           </Button>
         </form>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+          <Button 
+            type="submit" 
+            name="submit" 
+            id="button" 
+            color="primary"
+            >Login </Button>
+        </Form>
+>>>>>>> parent of 71ac842... vracanje
+>>>>>>> parent of 8ffd2f5... ccccc
       </div>
+=======
+>>>>>>> parent of a282da6... version 1.1
       </div>
     );
   }
