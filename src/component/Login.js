@@ -3,6 +3,7 @@ import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import axios from 'axios';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import './Login.css';
 <<<<<<< HEAD
 import Logo from '../component/Logo/Logo.js';
@@ -13,6 +14,8 @@ import Logo from './Logo/Logo.js';
 >>>>>>> parent of 8ffd2f5... ccccc
 =======
 >>>>>>> parent of 6dff0b3... bbb
+=======
+>>>>>>> parent of a282da6... version 1.1
 
 class Login extends Component {
 	constructor(props) {
@@ -40,6 +43,7 @@ class Login extends Component {
       <div className="Login">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> parent of ca6b9ed... Revert "aaa"
       <div className="col-md-10" id='bc-login'>
@@ -54,6 +58,8 @@ class Login extends Component {
                 value={this.state.username}
                 onChange = {e => this.handleChange(e)} />
 =======
+=======
+>>>>>>> parent of a282da6... version 1.1
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="username" size="large">
             <FormLabel>Username</FormLabel>
@@ -61,6 +67,9 @@ class Login extends Component {
               type="username"
               onChange={e => this.handleChange(e)}
             />
+<<<<<<< HEAD
+>>>>>>> parent of a282da6... version 1.1
+=======
 >>>>>>> parent of a282da6... version 1.1
           </FormGroup>
           <FormGroup controlId="password" size="large">
@@ -72,11 +81,14 @@ class Login extends Component {
           </FormGroup>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> parent of 8ffd2f5... ccccc
 =======
 >>>>>>> parent of 6dff0b3... bbb
+=======
+>>>>>>> parent of a282da6... version 1.1
           <Button
             block
             size="large"
@@ -85,6 +97,7 @@ class Login extends Component {
             Login
           </Button>
         </form>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -105,6 +118,8 @@ class Login extends Component {
 =======
 >>>>>>> parent of ca6b9ed... Revert "aaa"
       </div>
+=======
+>>>>>>> parent of a282da6... version 1.1
 =======
 >>>>>>> parent of a282da6... version 1.1
       </div>
