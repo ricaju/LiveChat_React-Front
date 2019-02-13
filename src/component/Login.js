@@ -26,6 +26,7 @@ class Login extends Component {
 	render() {
     return (
       <div className="Login">
+
       <div className="col-md-10" id='bc-login'>
         <Form onSubmit={e => this.handleSubmit(e)}>
           <FormGroup>
@@ -53,10 +54,7 @@ class Login extends Component {
             Login
           </Button>
         </form>
-<<<<<<< HEAD
       </div>
-=======
->>>>>>> parent of a282da6... version 1.1
       </div>
     );
   }

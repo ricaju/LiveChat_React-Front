@@ -1,0 +1,31 @@
+#bc-login{
+	
+	padding-top: 5vh;
+	height:  40vh;
+	width: auto;
+	background-color: #C38D9E;
+	display: flex;
+	justify-content: center;
+	margin-top: 10vh;
+	
+	
+	
+}
+#button{
+	background-color: transparent;
+	border: 2px solid #55BCC9;
+	border-radius: 45%;
+	color: #55BCC9;
+	font-weight: bold;
+	font-size: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	margin: auto;
+  
+}
+#button:hover {
+	background-color: black;
+	color: #168664;
+
+}
