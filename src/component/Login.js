@@ -22,7 +22,7 @@ class Login extends Component {
     axios.post('/getToken', {   //token
       email: this.state.username,
       password: this.state.password
-    }).then(res => localStorage.setItem('MP-jwt', res.data)); //MP = "moj prvi :)"
+    }).then(res => sessionStorage.setItem('MP-jwt', res.data)); //MP = "moj prvi :)"
 	};
 
    render() {
