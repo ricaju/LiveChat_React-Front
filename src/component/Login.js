@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import axios from 'axios';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import './Login.css';
 <<<<<<< HEAD
 import Logo from '../component/Logo/Logo.js';
@@ -10,6 +11,8 @@ import Logo from '../component/Logo/Logo.js';
 =======
 import Logo from './Logo/Logo.js';
 >>>>>>> parent of 8ffd2f5... ccccc
+=======
+>>>>>>> parent of 6dff0b3... bbb
 
 class Login extends Component {
 	constructor(props) {
@@ -65,9 +68,12 @@ class Login extends Component {
             />
           </FormGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> parent of 8ffd2f5... ccccc
+=======
+>>>>>>> parent of 6dff0b3... bbb
           <Button
             block
             size="large"
@@ -76,6 +82,7 @@ class Login extends Component {
             Login
           </Button>
         </form>
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -89,6 +96,8 @@ class Login extends Component {
         </Form>
 >>>>>>> parent of 71ac842... vracanje
 >>>>>>> parent of 8ffd2f5... ccccc
+=======
+>>>>>>> parent of 6dff0b3... bbb
       </div>
 =======
 >>>>>>> parent of a282da6... version 1.1
