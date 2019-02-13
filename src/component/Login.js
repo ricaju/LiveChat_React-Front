@@ -27,6 +27,7 @@ class Login extends Component {
 
    render() {
     return (
+      <div className="Login">
       <div className="col-md-10" id='bc-login'>
         <Form onSubmit={e => this.handleSubmit(e)}>
           <FormGroup>
@@ -56,6 +57,7 @@ class Login extends Component {
             color="primary"
             >Login </Button>
         </Form>
+      </div>
       </div>
     );
   }
