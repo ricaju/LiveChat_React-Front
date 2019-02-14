@@ -1,10 +1,6 @@
 #bc-form{
-	height: 600px;
-	width: 350px;
 	background-color: rgba(0,0,0,0.4);
 	border-radius: 10%;
-	float: right;
-	padding-top: 100px;
 }
 #button{
 	background-color: transparent;
@@ -22,13 +18,3 @@
 	color: #168664;
 
 }
-
-/*#reg-info {
-	display: flex;
-	/*justify-content: center;*/
-	/*align-items: center;
-	/*height: 100vh;*/
-	/*margin-left: 350px;*/
-   /* margin-left: auto;
-    padding-left: 750px;
-}*/

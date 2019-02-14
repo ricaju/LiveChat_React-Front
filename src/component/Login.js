@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import axios from 'axios';
+import { Mutation } from 'react-apollo'
+import gql from 'graphql-tag'
 
 class Login extends Component {
 	constructor(props) {
@@ -17,10 +19,6 @@ class Login extends Component {
 
 	handleSubmit = (e) => {
 	  e.preventDefault();
-    axios.post('/getToken', {   //token
-      email: this.state.username,
-      password: this.state.password
-    }).then(res => sessionStorage.setItem('MP-jwt', res.data)); //MP = "moj prvi :)"
 	};
 
 	render() {
@@ -58,6 +56,14 @@ class Login extends Component {
     );
   }
 }
+
+const LoginMutation = gql`
+  mutation LoginMutation($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
+      token
+    }
+  }
+`
 
 
 export default Login;
