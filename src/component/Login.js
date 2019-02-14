@@ -26,7 +26,7 @@ class Login extends Component {
 
    render() {
     return (
-      <div className="col-md-10" id='bc-login'>
+      <div className="col-md-8" id='bc-login'>
         <Form onSubmit={e => this.handleSubmit(e)}>
           <FormGroup>
             <Label className= 'white' htmlFor="username">Username</Label>

@@ -62,7 +62,7 @@ class Registration extends Component {
       
      /* <div className="container" id= 'reg-info'>           
         <div className="columns">   */       
-          <div className="col-md-10" id='bc-reg'>
+          <div className="col-md-8" id='bc-reg'>
             <Form onSubmit={e => this.handleSubmit(e)}>
                 <FormGroup>
                   <Label className= 'white' htmlFor="username">Username</Label>
