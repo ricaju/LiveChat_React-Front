@@ -18,7 +18,6 @@ class Registration extends Component {
       emailValid: "",
       passwordValid: "",
       confirmPasswordValid:"",
-      SECRET : 'safadgjh7834hurqwur82147fsdsfagji3435dfc',
      }
   };
 
@@ -57,16 +56,17 @@ class Registration extends Component {
     e.preventDefault();
     const check = this.checkValid();    
     if(!check) {
-    	console.log("jedna od formi je prazna"); //test    
+    	console.log("jok");    
     }
-    const { username, email, password } = this;
-    const response = await this.props.mutate({
-      variables: { username, password, email}
-    })
-    console.log(response);
+    else {
+      
+      const response = await
+        this.props.mutate({
+          variables: this.state.username
+        });
+      console.log(response);
+    }
   };
-
-
 
   render() {
     return (
@@ -136,10 +136,9 @@ class Registration extends Component {
 }
 
 const registerMutation = gql`
-  mutation($username: String!, $password: String!, $email: String!) {
+  mutation register($username: String!, $password: String!, $email: String!) {
     register(username : $username, password : $password, email : $email) {
       token
-     
     }
   }
 `;
