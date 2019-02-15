@@ -3,9 +3,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Particles from 'react-particles-js';
 import Login from '../component/Login';
 import Registration from '../component/Registration';
+import ChatContainer from '../component/ChatContainer';
 import './App.css';
 import Logo from '../component/Logo/Logo.js';
 import { Container, Row, Col, Button } from 'reactstrap';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 
 const particleOptions= {  
@@ -47,8 +50,17 @@ class App extends Component {
   render() {
     return(
       <div>
+
+      <Router>
+        <div>
+          <Link to="/ChatContainer">ChatContainer</Link>
+          <Route path="/ChatContainer" component={ChatContainer} />
+        </div>
+      </Router>
+
+
       <Particles className='particles' params={particleOptions} />
-          <Container >
+          <Container>
             <Row>
               <Col xs="6">  <Logo /> </Col>
               <Col xs="6" >
