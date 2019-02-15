@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
+import {Form, FormGroup, Label, Input, Button} from 'reactstrap'; 
 import axios from 'axios';
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
+import './Login.css';
 
 class Login extends Component {
 	constructor(props) {
@@ -19,11 +20,15 @@ class Login extends Component {
 
 	handleSubmit = (e) => {
 	  e.preventDefault();
+    axios.post('/getToken', {   //token
+      email: this.state.username,
+      password: this.state.password
+    }).then(res => localStorage.setItem('MP-jwt', res.data)); //MP = "moj prvi :)"
 	};
 
-	render() {
+   render() {
     return (
-      <div className="Login">
+      <div className="col-md-8" id='bc-login'>
         <Form onSubmit={e => this.handleSubmit(e)}>
           <FormGroup>
             <Label className= 'white' htmlFor="username">Username</Label>
@@ -52,7 +57,7 @@ class Login extends Component {
             color="primary"
             >Login </Button>
         </Form>
-      </div>
+      </div>      
     );
   }
 }

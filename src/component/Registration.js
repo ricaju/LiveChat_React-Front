@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
+import {Button} from 'reactstrap';
+import {Form, FormGroup, Label, Input} from 'reactstrap';
 import './Registration.css';
+
 
 class Registration extends Component {
   constructor(props){
@@ -24,7 +26,7 @@ class Registration extends Component {
   	let confirmPasswordValid = "";
 
   	if(!this.state.username) {
-  		usernameValid = "Username cant be empty";
+  		usernameValid = "Username can't be empty";
   	}
   	if(this.state.password.length < 5) {
   		passwordValid = "Password needs to have more than 5 characters";
@@ -57,10 +59,10 @@ class Registration extends Component {
 
   render() {
     return (
-      <div className="container" id= 'reg-info'> 
-        <div className="columns">
-          <div className="col-md-12" id='bc-form'>
-          {/*<h3 className="tl pa3 white">Registration</h3>*/}
+      
+     /* <div className="container" id= 'reg-info'>           
+        <div className="columns">   */       
+          <div className="col-md-8" id='bc-reg'>
             <Form onSubmit={e => this.handleSubmit(e)}>
                 <FormGroup>
                   <Label className= 'white' htmlFor="username">Username</Label>
@@ -109,13 +111,15 @@ class Registration extends Component {
                 </FormGroup>
                 <Button type="submit" 
                   name="submit" 
-                  id="button" 
-                  color="primary"
+                  id="button"                   
                   >Submit</Button>
             </Form>
+
           </div>
-        </div>
-      </div>
+        
+
+      /*</div>
+      </div>*/
     );
   }
 }

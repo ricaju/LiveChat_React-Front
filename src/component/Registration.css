@@ -1,20 +1,37 @@
+
 #bc-form{
 	background-color: rgba(0,0,0,0.4);
 	border-radius: 10%;
+
+#bc-reg{
+	padding-top: 5vh;
+	height:  70vh;
+	width: auto;
+	background-color: rgba(69, 162, 158, 0.8);
+	display: flex;
+	justify-content: center;
+	margin-top: 10vh;
+	font-weight: bold;
+	color: white;
+	/*border-radius: 10%;*/
 }
-#button{
+
+/*#button{
 	background-color: transparent;
-	border: 2px solid #168664;
-	border-radius: 45%;
-	color: #168664;
+	border: 2px solid #1F2833;
+	
+	color: white;
 	font-weight: bold;
 	font-size: 20px;
-	position: relative;
-	left: 100px;
-	top: 40px;
+	display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: auto;
+	
 }
 #button:hover {
-	background-color: black;
-	color: #168664;
+	background-color: #1F2833;
+	color: #66FCF1;
+	border: 2px solid #66FCF1;
 
 }
