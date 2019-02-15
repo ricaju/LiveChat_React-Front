@@ -3,9 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Particles from 'react-particles-js';
 import Login from '../component/Login';
 import Registration from '../component/Registration';
+import ChatContainer from '../component/ChatContainer';
 import './App.css';
 import Logo from '../component/Logo/Logo.js';
 import { Container, Row, Col, Button } from 'reactstrap';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 const particleOptions= {  
@@ -47,16 +49,25 @@ class App extends Component {
   render() {
     return(
       <div>
-      <Particles className='particles' params={particleOptions} />
+        <Router>
+          <div>
+            <Link to="/ChatContainer">ChatContainer</Link>
+            <Route path="/ChatContainer" component={ChatContainer} />
+          </div>
+        </Router>
+
+
+
           <Container >
+            <Particles className='particles' params={particleOptions} />
             <Row>
               <Col xs="6">  <Logo /> </Col>
               <Col xs="6" >
-              <Row className="red">
-              <Button id='login' onClick={this.handeLog}>Login</Button>
-              <Button id='registration' onClick={this.handleReg}>Registration</Button>
-                {this.state.login ? <Login/> : null}             
-                {this.state.registration ? <Registration/> : null}
+                <Row className="red">
+                  <Button id='login' onClick={this.handeLog}>Login</Button>
+                  <Button id='registration' onClick={this.handleReg}>Registration</Button>
+                    {this.state.login ? <Login/> : null}             
+                    {this.state.registration ? <Registration/> : null}
                 </Row>
               </Col>
             </Row> 
