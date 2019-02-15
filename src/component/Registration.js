@@ -31,14 +31,11 @@ class Registration extends Component {
   	if(this.state.password.length < 5) {
   		passwordValid = "Password needs to have more than 5 characters";
   	}
-
   	if(this.state.password !== this.state.confirmPassword) {
   		confirmPasswordValid = "Password and confirm password don't match!";
   	}
-
  	if (usernameValid || passwordValid || confirmPasswordValid) {   //setstejtanje upozorenja
  		this.setState({ usernameValid, passwordValid, confirmPasswordValid });
- 		return false;
  	}
   }
 

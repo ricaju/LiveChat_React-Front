@@ -2,6 +2,7 @@
 #bc-form{
 	background-color: rgba(0,0,0,0.4);
 	border-radius: 10%;
+}
 
 #bc-reg{
 	padding-top: 5vh;
@@ -16,7 +17,7 @@
 	/*border-radius: 10%;*/
 }
 
-/*#button{
+#button{
 	background-color: transparent;
 	border: 2px solid #1F2833;
 	
