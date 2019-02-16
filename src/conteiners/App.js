@@ -6,12 +6,19 @@ import Registration from '../component/Registration';
 import './App.css';
 import Logo from '../component/Logo/Logo.js';
 import { Container, Row, Col, Button } from 'reactstrap';
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
+import cors from 'cors';
+
+const client = new ApolloClient({
+  uri: "http://localhost:4000/graphql"
+});
 
 
-const particleOptions= {  
+const particleOptions= {
       particles: {
         number: {
-          value: 80, 
+          value: 80,
           density: {
             enable: true,
             value_area: 1000
@@ -47,20 +54,25 @@ class App extends Component {
   render() {
     return(
       <div>
+      <ApolloProvider client={client}>
       <Particles className='particles' params={particleOptions} />
-          <Container >
+          <Container>
             <Row>
               <Col xs="6">  <Logo /> </Col>
               <Col xs="6" >
               <Row className="red">
               <Button id='login' onClick={this.handeLog}>Login</Button>
               <Button id='registration' onClick={this.handleReg}>Registration</Button>
-                {this.state.login ? <Login/> : null}             
+                {this.state.login ? <Login/> : null}
                 {this.state.registration ? <Registration/> : null}
                 </Row>
               </Col>
-            </Row> 
-          </Container>        
+            </Row>
+
+
+
+          </Container>
+        </ApolloProvider>
       </div>
       );
     }
