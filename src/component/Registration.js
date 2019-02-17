@@ -59,13 +59,14 @@ class Registration extends Component {
     	console.log("jok");    
     }
     else {
-      this.props.mutate({
+      var token = await this.props.mutate({
         variables: {
           username : this.state.username,
           email : this.state.email,
           password : this.state.password
         },
       });
+      localStorage.setItem('jwt', JSON.stringify(token));
     }
   };
 
