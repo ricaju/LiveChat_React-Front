@@ -3,12 +3,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Particles from 'react-particles-js';
 import Login from '../component/Login';
 import Registration from '../component/Registration';
+import ChatContainer from '../component/ChatContainer';
+import {PrivateRoute} from '../component/PrivateRoute';
 import './App.css';
 import Logo from '../component/Logo/Logo.js';
 import { Container, Row, Col, Button } from 'reactstrap';
+import { BrowserRouter as Router, Route, Link} from "react-router-dom";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
-import cors from 'cors';
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql"
@@ -35,7 +37,8 @@ class App extends Component {
     super(props);
     this.state = {
       login: true,
-      registration: false
+      registration: false,
+      container: true
     }
   }
 
@@ -51,11 +54,29 @@ class App extends Component {
       registration: true
     })
   }
+
+
+  handleMainChat = () => {
+    this.setState({
+      container: false
+    })
+  }
+
+
   render() {
     return(
       <div>
+
+      <Router>
+        <div>
+          <Link to='/ChatContainer' onClick={this.handleMainChat} >ChatContainer</Link>
+          <Route path="/ChatContainer"  component={ChatContainer} />
+        </div>
+      </Router>
+
       <ApolloProvider client={client}>
       <Particles className='particles' params={particleOptions} />
+        {this.state.container ?                                     // testing Main
           <Container>
             <Row>
               <Col xs="6">  <Logo /> </Col>
@@ -68,10 +89,8 @@ class App extends Component {
                 </Row>
               </Col>
             </Row>
-
-
-
-          </Container>
+          </Container> : null
+        }
         </ApolloProvider>
       </div>
       );
