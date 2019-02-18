@@ -8,13 +8,19 @@ import './App.css';
 import Logo from '../component/Logo/Logo.js';
 import { Container, Row, Col, Button } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
+import cors from 'cors';
+
+const client = new ApolloClient({
+  uri: "http://localhost:4000/graphql"
+});
 
 
-
-const particleOptions= {  
+const particleOptions= {
       particles: {
         number: {
-          value: 80, 
+          value: 80,
           density: {
             enable: true,
             value_area: 1000
@@ -50,7 +56,6 @@ class App extends Component {
   render() {
     return(
       <div>
-
       <Router>
         <div>
           <Link to="/ChatContainer">ChatContainer</Link>
@@ -58,7 +63,7 @@ class App extends Component {
         </div>
       </Router>
 
-
+      <ApolloProvider client={client}>
       <Particles className='particles' params={particleOptions} />
           <Container>
             <Row>
@@ -67,12 +72,14 @@ class App extends Component {
               <Row className="red">
               <Button id='login' onClick={this.handeLog}>Login</Button>
               <Button id='registration' onClick={this.handleReg}>Registration</Button>
-                {this.state.login ? <Login/> : null}             
+                {this.state.login ? <Login/> : null}
                 {this.state.registration ? <Registration/> : null}
                 </Row>
               </Col>
-            </Row> 
-          </Container>        
+            </Row>
+
+          </Container>
+        </ApolloProvider>
       </div>
       );
     }
