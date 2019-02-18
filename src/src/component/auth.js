@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 const getJWTtoken = () => {
-	return localStorage.getItem('jwt'); 
+	return localStorage.getItem('MP-jwt'); // staviti u poseban fajl?
 }
 
 class Auth extends Component {            //pomocu ove komponente cemo provjeravati autorizaciju usera, "wrap" oko glavne komponente chata
