@@ -67,14 +67,13 @@ class App extends Component {
     return(
       <div>
 
+      <ApolloProvider client={client}>
       <Router>
         <div>
           <Link to='/ChatContainer' onClick={this.handleMainChat} >ChatContainer</Link>
-          <Route path="/ChatContainer"  component={ChatContainer} />
+          <PrivateRoute path="/ChatContainer"  component={ChatContainer} />
         </div>
       </Router>
-
-      <ApolloProvider client={client}>
       <Particles className='particles' params={particleOptions} />
         {this.state.container ?                                     // testing Main
           <Container>
