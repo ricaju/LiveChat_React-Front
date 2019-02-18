@@ -49,6 +49,8 @@ class SendingMessages extends Component {
 						onChange={e => this.setState( {content: e.target.value} )}
 						onKeyPress={this.sendingMessage}
 					/>
+					<Button 
+					color="primary">Send</Button>
 				</Form>
 			</div>
 
