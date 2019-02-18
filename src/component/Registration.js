@@ -63,9 +63,14 @@ class Registration extends Component {
           password : this.state.password
         },
       });
-      localStorage.setItem('jwt', JSON.stringify(token));
-    }
-  };
+      if (JSON.stringify(token) === '{"data":{"register":"Username already taken"}}' ||
+        JSON.stringify(token) === '{"data":{"register":"Email already exists"}}') {
+        this.usernameValid = JSON.stringify(token);
+      }
+      else {
+        localStorage.setItem('jwt', JSON.stringify(token));
+      }
+    }};
 
   render() {
     return (
