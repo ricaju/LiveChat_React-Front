@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Particles from 'react-particles-js';
 import Login from '../component/Login';
 import Registration from '../component/Registration';
-import ChatContainer from '../component/ChatContainer';
+import ChatContainerSending from '../component/ChatContainerSending';
 import {PrivateRoute} from '../component/PrivateRoute';
 import './App.css';
 import Logo from '../component/Logo/Logo.js';
@@ -68,12 +68,13 @@ class App extends Component {
       <div>
 
       <ApolloProvider client={client}>
-      <Router>
-        <div>
-          <Link to='/ChatContainer' onClick={this.handleMainChat} >ChatContainer</Link>
-          <PrivateRoute path="/ChatContainer"  component={ChatContainer} />
-        </div>
-      </Router>
+
+        <Router>
+          <div>
+             <Link to='/ChatContainerSending' onClick={this.handleMainChat} >ChatContainer</Link>
+             <PrivateRoute path="/ChatContainerSending"  component={ChatContainerSending} />
+          </div>
+        </Router>
       <Particles className='particles' params={particleOptions} />
         {this.state.container ?                                     // testing Main
           <Container>
