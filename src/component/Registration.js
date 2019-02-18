@@ -53,13 +53,13 @@ class Registration extends Component {
     e.preventDefault();
     const check = this.checkValid();    
     if(!check) {
-    	console.log("jok");    
+    	console.log("jok"); 
     }
     else {
-      
+      console.log("qaaaaaa")
       const response = await
         this.props.mutate({
-          variables: this.state.username
+          variables: {username: this.state.username, email: this.state.email, password: this.state.password}
         });
       console.log(response);
     }

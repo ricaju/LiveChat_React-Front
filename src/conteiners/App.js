@@ -8,7 +8,7 @@ import Logo from '../component/Logo/Logo.js';
 import { Container, Row, Col, Button } from 'reactstrap';
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
-import cors from 'cors';
+
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql"
