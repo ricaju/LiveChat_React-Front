@@ -5,6 +5,7 @@ import './Registration.css';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 
+
 class Registration extends Component {
   constructor(props){
     super(props);
@@ -17,7 +18,6 @@ class Registration extends Component {
       emailValid: "",
       passwordValid: "",
       confirmPasswordValid:"",
-      SECRET : 'safadgjh7834hurqwur82147fsdsfagji3435dfc',
      }
   };
 
@@ -28,7 +28,7 @@ class Registration extends Component {
   	let confirmPasswordValid = "";
 
   	if(!this.state.username) {
-  		usernameValid = "Username cant be empty";
+  		usernameValid = "Username can't be empty";
   	}
   	if(this.state.password.length < 5) {
   		passwordValid = "Password needs to have more than 5 characters";
@@ -56,23 +56,26 @@ class Registration extends Component {
     e.preventDefault();
     const check = this.checkValid();    
     if(!check) {
-    	console.log("jedna od formi je prazna"); //test    
+    	console.log("jok");    
     }
-    const { username, email, password } = this;
-    const response = await this.props.mutate({
-      variables: { username, password, email}
-    })
-    console.log(response);
+    else {
+      var token = await this.props.mutate({
+        variables: {
+          username : this.state.username,
+          email : this.state.email,
+          password : this.state.password
+        },
+      });
+      localStorage.setItem('jwt', JSON.stringify(token));
+    }
   };
-
-
 
   render() {
     return (
-      <div className="container" id= 'reg-info'> 
-        <div className="columns">
-          <div className="col-md-12" id='bc-form'>
-          {/*<h3 className="tl pa3 white">Registration</h3>*/}
+      
+     /* <div className="container" id= 'reg-info'>           
+        <div className="columns">   */       
+          <div className="col-md-8" id='bc-reg'>
             <Form onSubmit={e => this.handleSubmit(e)}>
                 <FormGroup>
                   <Label className= 'white' htmlFor="username">Username</Label>
@@ -121,25 +124,23 @@ class Registration extends Component {
                 </FormGroup>
                 <Button type="submit" 
                   name="submit" 
-                  id="button" 
-                  color="primary"
+                  id="button"                   
                   >Submit</Button>
             </Form>
+
           </div>
-        </div>
-      </div>
+        
+
+      /*</div>
+      </div>*/
     );
   }
 }
 
-/*const registerMutation = gql`
-  mutation
-  CreateCheckout($storeusername: String!, $storepassword: String!, $storeemail: String!,$properties:CheckoutInput) {
-    createCheckout(storeusername : $username, storepassword : $password, storeemail : $email,properties:$properties) {
-      checkouttoken
-      checkout{ username, password, email}
-    }
+const registerMutation = gql`
+  mutation register($username: String!, $password: String!, $email: String!) {
+    register(username : $username, password : $password, email : $email)
   }
 `;
-*/
-export default Registration;
+
+export default graphql(registerMutation)(Registration);
