@@ -56,12 +56,14 @@ class Registration extends Component {
     	console.log("jok");    
     }
     else {
-      
-      const response = await
-        this.props.mutate({
-          variables: this.state.username
-        });
-      console.log(response);
+      var token = await this.props.mutate({
+        variables: {
+          username : this.state.username,
+          email : this.state.email,
+          password : this.state.password
+        },
+      });
+      localStorage.setItem('jwt', JSON.stringify(token));
     }
   };
 
@@ -134,9 +136,7 @@ class Registration extends Component {
 
 const registerMutation = gql`
   mutation register($username: String!, $password: String!, $email: String!) {
-    register(username : $username, password : $password, email : $email) {
-      token
-    }
+    register(username : $username, password : $password, email : $email)
   }
 `;
 
