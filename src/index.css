@@ -1,13 +1,21 @@
+/*@import url('https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet');
+@font-face{
+  font-family: 'Roboto Mono', monospace;
+  src: url('https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet');
+}*/
+
 body {
   margin: 0;
   padding: 0;
+
+
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: rgb(41,65,61);
-  background: linear-gradient(90deg, rgba(41,65,61,1) 19%, rgba(11,91,69,1) 43%, rgba(22,134,100,1) 63%);
+  background: #1F2833;
+  
 }
 
 code {

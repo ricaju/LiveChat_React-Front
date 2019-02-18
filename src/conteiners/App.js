@@ -1,20 +1,33 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Particles from 'react-particles-js';
-import { BrowserRouter as Router } from 'react-router-dom';
 import Login from '../component/Login';
 import Registration from '../component/Registration';
+import ChatContainer from '../component/ChatContainer';
+import {PrivateRoute} from '../component/PrivateRoute';
 import './App.css';
+import Logo from '../component/Logo/Logo.js';
 import { Container, Row, Col, Button } from 'reactstrap';
+import { BrowserRouter as Router, Route, Link} from "react-router-dom";
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
 
-const particleOptions= {  
+const client = new ApolloClient({
+  uri: "http://localhost:4000/graphql"
+});
+
+
+const particleOptions= {
       particles: {
         number: {
-          value: 80, 
+          value: 80,
           density: {
             enable: true,
             value_area: 1000
           }
+        },
+        "color": {
+          "value": "random"
         }
       }
     }
@@ -24,7 +37,8 @@ class App extends Component {
     super(props);
     this.state = {
       login: true,
-      registration: false
+      registration: false,
+      container: true
     }
   }
 
@@ -40,28 +54,46 @@ class App extends Component {
       registration: true
     })
   }
+
+
+  handleMainChat = () => {
+    this.setState({
+      container: false
+    })
+  }
+
+
   render() {
     return(
       <div>
+
+      <Router>
+        <div>
+          <Link to='/ChatContainer' onClick={this.handleMainChat} >ChatContainer</Link>
+          <Route path="/ChatContainer"  component={ChatContainer} />
+        </div>
+      </Router>
+
+      <ApolloProvider client={client}>
       <Particles className='particles' params={particleOptions} />
-        <Router>
+        {this.state.container ?                                     // testing Main
           <Container>
             <Row>
-              <Col xs="6"> Prvi Kontejner </Col>
-              <Col xs="6">
-              <Button className="float-right" onClick={this.handeLog}>Login</Button>
-              {this.state.login ? <Login/> : null}
-              <Button className="float-left" onClick={this.handleReg}>Registration</Button>
-              {this.state.registration ? <Registration/> : null}
+              <Col xs="6">  <Logo /> </Col>
+              <Col xs="6" >
+              <Row className="red">
+              <Button id='login' onClick={this.handeLog}>Login</Button>
+              <Button id='registration' onClick={this.handleReg}>Registration</Button>
+                {this.state.login ? <Login/> : null}
+                {this.state.registration ? <Registration/> : null}
+                </Row>
               </Col>
             </Row>
-
-
-
-          </Container>
-        </Router>
+          </Container> : null
+        }
+        </ApolloProvider>
       </div>
-      )
+      );
     }
 }
 

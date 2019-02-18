@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import {Form, FormGroup, Label, Input, Button} from 'reactstrap'; 
 import axios from 'axios';
+import { Mutation } from 'react-apollo'
+import gql from 'graphql-tag'
+import './Login.css';
 
 class Login extends Component {
 	constructor(props) {
@@ -23,36 +26,49 @@ class Login extends Component {
     }).then(res => localStorage.setItem('MP-jwt', res.data)); //MP = "moj prvi :)"
 	};
 
-	render() {
+   render() {
     return (
-      <div className="Login">
-        <form onSubmit={this.handleSubmit}>
-          <FormGroup controlId="username" size="large">
-            <FormLabel>Username</FormLabel>
-            <FormControl
-              type="username"
-              onChange={e => this.handleChange(e)}
-            />
+      <div className="col-md-8" id='bc-login'>
+        <Form onSubmit={e => this.handleSubmit(e)}>
+          <FormGroup>
+            <Label className= 'white' htmlFor="username">Username</Label>
+              <Input 
+                type="text" 
+                name="username" 
+                id="username" 
+                placeholder="Type your username"
+                value={this.state.username}
+                onChange = {e => this.handleChange(e)} />
           </FormGroup>
-          <FormGroup controlId="password" size="large">
-            <FormLabel>Password</FormLabel>
-            <FormControl
-              type="password"        //value?
-              onChange={e => this.handleChange(e)}
-            />
+          <FormGroup>
+            <Label className= 'white' htmlFor="password">Password</Label>
+              <Input 
+                type="password" 
+                name="password" 
+                id="password" 
+                placeholder="Type your password"
+                value={this.state.password}
+                onChange = {e => this.handleChange(e)} />
           </FormGroup>
-          <Button
-            block
-            size="large"
-            type="submit"
-          >
-            Login
-          </Button>
-        </form>
-      </div>
+          <Button 
+            type="submit" 
+            name="submit" 
+            id="button" 
+            color="primary"
+            >Login </Button>
+        </Form>
+      </div>      
     );
   }
 }
+
+const LoginMutation = gql`
+  mutation LoginMutation($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
+      token
+    }
+  }
+`
 
 
 export default Login;

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import {Button} from 'reactstrap';
 import {Form, FormGroup, Label, Input} from 'reactstrap';
 import './Registration.css';
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
+
 
 class Registration extends Component {
   constructor(props){
@@ -25,43 +28,49 @@ class Registration extends Component {
   	let confirmPasswordValid = "";
 
   	if(!this.state.username) {
-  		usernameValid = "Username cant be empty";
+  		usernameValid = "Username can't be empty";
   	}
   	if(this.state.password.length < 5) {
   		passwordValid = "Password needs to have more than 5 characters";
   	}
-
   	if(this.state.password !== this.state.confirmPassword) {
   		confirmPasswordValid = "Password and confirm password don't match!";
   	}
-
  	if (usernameValid || passwordValid || confirmPasswordValid) {   //setstejtanje upozorenja
  		this.setState({ usernameValid, passwordValid, confirmPasswordValid });
- 		return false;
  	}
+  else {
+    this.setState({ usernameValid, passwordValid, confirmPasswordValid });
+    return true;
   }
+}
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
   };
 
-  handleSubmit = (e) => {    
+  handleSubmit = async (e) => {    
     e.preventDefault();
     const check = this.checkValid();    
     if(!check) {
-    	console.log("jedna od formi je prazna"); //test    
+    	console.log("jok");    
     }
-    console.log('dodali smo username:' + this.state.username); //test 
+    else {
+      
+      const response = await
+        this.props.mutate({
+          variables: this.state.username
+        });
+      console.log(response);
+    }
   };
-
-
 
   render() {
     return (
-      <div className="container" id= 'reg-info'> 
-        <div className="columns">
-          <div className="col-md-12" id='bc-form'>
-          {/*<h3 className="tl pa3 white">Registration</h3>*/}
+      
+     /* <div className="container" id= 'reg-info'>           
+        <div className="columns">   */       
+          <div className="col-md-8" id='bc-reg'>
             <Form onSubmit={e => this.handleSubmit(e)}>
                 <FormGroup>
                   <Label className= 'white' htmlFor="username">Username</Label>
@@ -110,16 +119,25 @@ class Registration extends Component {
                 </FormGroup>
                 <Button type="submit" 
                   name="submit" 
-                  id="button" 
-                  color="primary"
+                  id="button"                   
                   >Submit</Button>
             </Form>
+
           </div>
-        </div>
-      </div>
+        
+
+      /*</div>
+      </div>*/
     );
   }
 }
 
+const registerMutation = gql`
+  mutation register($username: String!, $password: String!, $email: String!) {
+    register(username : $username, password : $password, email : $email) {
+      token
+    }
+  }
+`;
 
-export default Registration;
+export default graphql(registerMutation)(Registration);
