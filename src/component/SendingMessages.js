@@ -17,19 +17,22 @@ const MUTATION_FOR_NEW_MESSAGES= gql`
 
 class SendingMessages extends Component {
 	constructor(props) {
-		super(prosp);
+		super(props);
 		this.state = {
 			content: "",
 			from: ""
 		}
 	}
 
-	sendingMessage = asyc (e) => {			//on pressing enter mutation content and sender (from)
+	sendingMessage = async (e) => {			//on pressing enter mutation content and sender (from)
 		if (e.key === 'Enter') {
 			await this.props.mutationForNewMessages({
-				variables: {this.state.content, this.state.from}
+				variables: {
+					content: this.state.content, 
+					from: this.state.from
+					}
 			});
-			this.setState({ this.state.content: "" })  // erasing content
+			this.setState({ content: "" })  // erasing content
 		}
 	}
 
