@@ -9,26 +9,14 @@ import ChatContainer from '../component/ChatContainer';
 import './App.css';
 import Logo from '../component/Logo/Logo.js';
 import { Container, Row, Col, Button } from 'reactstrap';
-import { BrowserRouter as Router, Route, Link} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import {SubscriptionClient} from 'subscriptions-transport-ws';
-import ReactDOM from 'react-dom';
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql"
-});
-
-const WSClient = new SubscriptionClient(`http://localhost:4000/subscriptions`, {
-  reconnect: true,
-  connectionParams: {
-  }
-});
-
-const GraphQLClient = new ApolloClient({
-  link: WSClient,
-  cache: new InMemoryCache()
 });
 
 const particleOptions= {
@@ -52,15 +40,16 @@ class App extends Component {
     this.state = {
       login: true,
       registration: false,
-      container: true
+      container: true,
+      redirect: false,
     }
   }
 
-  handeLog = () => {
+  handleLog = () => {
     this.setState({
       login: true,
       registration: false
-    });
+    })
   }
   handleReg = () => {
     this.setState({
@@ -75,38 +64,61 @@ class App extends Component {
     })
   }
 
-  render() {
-    return(
-      <div>
-      <ApolloProvider client={GraphQLClient}>
-      <ApolloProvider client={client}>
+  handleTriger = () => {
+    this.setState({
+      redirect: true
+    })
 
-        <Router>
-          <div>
-             <PrivateRoute path="/ChatContainerSending" exact={true} component={ChatContainerSending} />
-          </div>
-        </Router>
-      <Particles className='particles' params={particleOptions} />
-        {this.state.container ?                                     // testing Main
-          <Container>
-            <Row>
-              <Col xs="6">  <Logo /> </Col>
-              <Col xs="6" >
-              <Row className="red">
-              <Button id='login' onClick={this.handeLog}>Login</Button>
-              <Button id='registration' onClick={this.handleReg}>Registration</Button>
-                {this.state.login ? <Login/> : null}
-                {this.state.registration ? <Registration/> : null}
+    const WSClient = new SubscriptionClient(`ws://localhost:4000/subscriptions`, {
+      reconnect: true,
+      connectionParams: {
+      }
+    });
+
+    const GraphQLClient = new ApolloClient({
+      link: WSClient,
+      cache: new InMemoryCache()
+    });
+  }
+
+
+
+  render() {
+    if(this.state.redirect){
+      return(
+      <Router>
+        <div>
+          <Redirect to="/ChatContainerSending" />
+          <PrivateRoute path="/ChatContainerSending" exact={true} component={ChatContainerSending} />
+        </div>
+      </Router>)
+    }
+    else {
+      return(
+      <div>
+        <ApolloProvider client={client}>
+          <Particles className='particles' params={particleOptions} />
+            {this.state.container ?                                     // testing Main
+              <Container>
+                <Row>
+                  <Col xs="6">  <Logo /> </Col>
+                  <Col xs="6" >
+                  <Row className="red">
+                  <Button id='login' onClick={this.handleLog}>Login</Button>
+                  <Button id='registration' onClick={this.handleReg}>Registration</Button>
+                    {this.state.login ? <Login trigerChat={this.handleTriger}  /> : null}
+                    {this.state.registration ? <Registration trigerChat={this.handleTriger} /> : null}
+                    </Row>
+                  </Col>
                 </Row>
-              </Col>
-            </Row>
-          </Container> : null
-        }
-        </ApolloProvider>
-        </ApolloProvider>,
+              </Container> : null
+            }
+
+          </ApolloProvider>
       </div>
       );
     }
+  }
 }
 
 export default App;
