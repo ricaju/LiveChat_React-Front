@@ -72,7 +72,7 @@ class App extends Component {
         <Router>
           <div>
              <Link to='/ChatContainerSending' onClick={this.handleMainChat} >ChatContainer</Link>
-             <PrivateRoute path="/ChatContainerSending"  component={ChatContainerSending} />
+             <Route path="/ChatContainerSending" exact={true} component={ChatContainerSending} />
           </div>
         </Router>
       <Particles className='particles' params={particleOptions} />
