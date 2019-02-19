@@ -10,7 +10,9 @@ class Login extends Component {
   	super(props);
   	this.state = {
   		username: '',
-  		password: ''
+  		password: '',
+      usernameValid: '',
+      passwordValid: ''
   	}
 	};
 
@@ -41,9 +43,8 @@ class Login extends Component {
 
 	handleSubmit = async (e) => {
     e.preventDefault();
-    const check = this.checkValid();    
-    if(!check) {
-      console.log("jok");    
+    const check = await this.checkValid();    
+    if(!check) {  
     }
     else {
       var token = await this.props.mutate({
@@ -52,15 +53,24 @@ class Login extends Component {
           password : this.state.password
         },
       });
-      localStorage.setItem('jwt', JSON.stringify(token));
-      return (<Redirect to='/ChatContainerSending'/>);
+      if (JSON.stringify(token) === '{"data":{"login":"There is no user with that username"}}') {
+        var usernameValid = "There is no user with that username";
+        this.setState({ usernameValid })
+      }
+      else if (JSON.stringify(token) === '{"data":{"login":"Incorrect password"}}') {
+        var passwordValid = 'Incorrect password';
+        this.setState({ passwordValid })
+      }
+      else {
+        localStorage.setItem('jwt', JSON.stringify(token));
+        this.props.trigerChat()
+        }
+      }
     }
 
 
-	};
-
    render() {
-    return (
+      return (
       <div className="col-md-8" id='bc-login'>
         <Form onSubmit={e => this.handleSubmit(e)}>
           <FormGroup>
@@ -72,6 +82,7 @@ class Login extends Component {
                 placeholder="Type your username"
                 value={this.state.username}
                 onChange = {e => this.handleChange(e)} />
+                <div style={{color: "red"}}> {this.state.usernameValid} </div>
           </FormGroup>
           <FormGroup>
             <Label className= 'white' htmlFor="password">Password</Label>
@@ -82,6 +93,7 @@ class Login extends Component {
                 placeholder="Type your password"
                 value={this.state.password}
                 onChange = {e => this.handleChange(e)} />
+                <div style={{color: "red"}}> {this.state.passwordValid} </div>
           </FormGroup>
           <Button 
             type="submit" 
