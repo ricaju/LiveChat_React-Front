@@ -10,7 +10,10 @@ class Login extends Component {
   	super(props);
   	this.state = {
   		username: '',
-  		password: ''
+  		password: '',
+      usernameValid: "",
+      passwordValid: " "
+
   	}
 	};
 
@@ -72,6 +75,7 @@ class Login extends Component {
                 placeholder="Type your username"
                 value={this.state.username}
                 onChange = {e => this.handleChange(e)} />
+                <div style={{color: "red"}}> {this.state.usernameValid} </div>
           </FormGroup>
           <FormGroup>
             <Label className= 'white' htmlFor="password">Password</Label>
@@ -82,6 +86,7 @@ class Login extends Component {
                 placeholder="Type your password"
                 value={this.state.password}
                 onChange = {e => this.handleChange(e)} />
+                <div style={{color: "red"}}> {this.state.passwordValid} </div>
           </FormGroup>
           <Button 
             type="submit" 
