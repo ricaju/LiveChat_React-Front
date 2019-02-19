@@ -23,7 +23,7 @@ class Registration extends Component {
 
   checkValid = () => {
   	let usernameValid = "";
-  	//let emailValid = ""; // ostaviti JSX "type='email' validaciju?
+  	let emailValid = ""; // ostaviti JSX "type='email' validaciju?
   	let passwordValid = "";
   	let confirmPasswordValid = "";
 
@@ -36,11 +36,11 @@ class Registration extends Component {
   	if(this.state.password !== this.state.confirmPassword) {
   		confirmPasswordValid = "Password and confirm password don't match!";
   	}
- 	if (usernameValid || passwordValid || confirmPasswordValid) {   //setstejtanje upozorenja
- 		this.setState({ usernameValid, passwordValid, confirmPasswordValid });
+ 	if (usernameValid || passwordValid || confirmPasswordValid || emailValid) {   //setstejtanje upozorenja
+ 		this.setState({ usernameValid, passwordValid, confirmPasswordValid, emailValid });
  	}
   else {
-    this.setState({ usernameValid, passwordValid, confirmPasswordValid });
+    this.setState({ usernameValid, passwordValid, confirmPasswordValid, emailValid });
     return true;
   }
 }
@@ -51,9 +51,8 @@ class Registration extends Component {
 
   handleSubmit = async (e) => {    
     e.preventDefault();
-    const check = this.checkValid();    
-    if(!check) {
-    	console.log("jok");    
+    const check = await this.checkValid();    
+    if(!check) {  
     }
     else {
       var token = await this.props.mutate({
@@ -63,9 +62,13 @@ class Registration extends Component {
           password : this.state.password
         },
       });
-      if (JSON.stringify(token) === '{"data":{"register":"Username already taken"}}' ||
-        JSON.stringify(token) === '{"data":{"register":"Email already exists"}}') {
-        this.usernameValid = JSON.stringify(token);
+      if (JSON.stringify(token) === '{"data":{"register":"Username already taken"}}') {
+        var usernameValid = 'Username already taken';
+        this.setState({ usernameValid })
+      }
+      else if (JSON.stringify(token) === '{"data":{"register":"Email already exists"}}') {
+        var emailValid = 'Email already exists';
+        this.setState({ emailValid })
       }
       else {
         localStorage.setItem('jwt', JSON.stringify(token));
@@ -100,6 +103,7 @@ class Registration extends Component {
                   value={this.state.email}
                   onChange = {e => this.handleChange(e)}
                   />
+                  <div style={{color: "red"}}> {this.state.emailValid} </div>
                 </FormGroup>
                 <FormGroup>
                   <Label className= 'white' htmlFor="password"> Password </Label>
