@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap'; 
+import axios from 'axios';
 import './Login.css';
-import gql from 'graphql-tag';
-import { graphql } from 'react-apollo';
-import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
 
 class Login extends Component {
 	constructor(props) {
@@ -14,49 +12,16 @@ class Login extends Component {
   	}
 	};
 
-  checkValid = () => {
-    let usernameValid = "";
-    let passwordValid = "";
-
-    if(!this.state.username) {
-      usernameValid = "Username can't be empty";
-    }
-    if(this.state.password.length < 5) {
-      passwordValid = "Password needs to have more than 5 characters";
-    }
-
-  if (usernameValid || passwordValid) {   //setstejtanje upozorenja
-    this.setState({ usernameValid, passwordValid});
-    return false;
-  }
-  else {
-    this.setState({ usernameValid, passwordValid});
-    return true;
-  }
-}
-
 	handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   	};
 
-	handleSubmit = async (e) => {
-    e.preventDefault();
-    const check = this.checkValid();    
-    if(!check) {
-      console.log("jok");    
-    }
-    else {
-      var token = await this.props.mutate({
-        variables: {
-          username : this.state.username,
-          password : this.state.password
-        },
-      });
-      localStorage.setItem('jwt', JSON.stringify(token));
-      return (<Redirect to='/ChatContainerSending'/>);
-    }
-
-
+	handleSubmit = (e) => {
+	  e.preventDefault();
+    axios.post('/getToken', {   //token
+      email: this.state.username,
+      password: this.state.password
+    }).then(res => localStorage.setItem('MP-jwt', res.data)); //MP = "moj prvi :)"
 	};
 
    render() {
@@ -95,11 +60,4 @@ class Login extends Component {
   }
 }
 
-const loginMutation = gql`
-  mutation login($username: String!, $password: String!) {
-    login(username : $username, password : $password)
-  }
-`;
-
-export default graphql(loginMutation)(Login);
-
+export default Login;

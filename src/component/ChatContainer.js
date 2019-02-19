@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import ChatBox from './ChatBox';
+import { Container, Row, Col } from 'reactstrap';
 
 /*const CHAT_HISTORY = gql`
 	query AllChatsQuery {
@@ -18,13 +19,17 @@ class ChatContainer extends Component {
 	render() {
 		//const chatHistory = this.props.AllChatsQuery.chatHistory || []  // storing chat history in "chatHistory" or empty string (if there's no chat)
 		return(
-			<div className="container">
-				<div className="container">
-					test TEST TEST TEST
-				 	{/*{chatHistory.map(message => (                          //looping through chatHistory and showing it in ChatBox component
-						<ChatBox key={message.id} message={message} />
-					))}*/}
-				</div>
+			<div className="d-flex">
+				<Container className="bg-light p-3">
+					<div>
+						test TEST TEST TEST
+						dsfdsfdsgdsg
+						fsgdggf
+					 	{/*{chatHistory.map(message => (                          //looping through chatHistory and showing it in ChatBox component
+							<ChatBox key={message.id} message={message} />
+						))}*/}
+					</div>
+				</Container>
 			</div>
 
 
