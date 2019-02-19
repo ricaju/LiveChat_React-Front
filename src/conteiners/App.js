@@ -69,13 +69,11 @@ class App extends Component {
     })
   }
 
-
   handleMainChat = () => {
     this.setState({
       container: false
     })
   }
-
 
   render() {
     return(
@@ -85,8 +83,7 @@ class App extends Component {
 
         <Router>
           <div>
-             <Link to='/ChatContainerSending' onClick={this.handleMainChat} >ChatContainer</Link>
-             <Route path="/ChatContainerSending" exact={true} component={ChatContainerSending} />
+             <PrivateRoute path="/ChatContainerSending" exact={true} component={ChatContainerSending} />
           </div>
         </Router>
       <Particles className='particles' params={particleOptions} />
