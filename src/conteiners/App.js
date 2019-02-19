@@ -5,17 +5,31 @@ import Login from '../component/Login';
 import Registration from '../component/Registration';
 import ChatContainerSending from '../component/ChatContainerSending';
 import {PrivateRoute} from '../component/PrivateRoute';
+import ChatContainer from '../component/ChatContainer';
 import './App.css';
 import Logo from '../component/Logo/Logo.js';
 import { Container, Row, Col, Button } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link} from "react-router-dom";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import {SubscriptionClient} from 'subscriptions-transport-ws';
+import ReactDOM from 'react-dom';
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql"
 });
 
+const WSClient = new SubscriptionClient(`http://localhost:4000/subscriptions`, {
+  reconnect: true,
+  connectionParams: {
+  }
+});
+
+const GraphQLClient = new ApolloClient({
+  link: WSClient,
+  cache: new InMemoryCache()
+});
 
 const particleOptions= {
       particles: {
@@ -66,7 +80,7 @@ class App extends Component {
   render() {
     return(
       <div>
-
+      <ApolloProvider client={GraphQLClient}>
       <ApolloProvider client={client}>
 
         <Router>
@@ -92,6 +106,7 @@ class App extends Component {
           </Container> : null
         }
         </ApolloProvider>
+        </ApolloProvider>,
       </div>
       );
     }
