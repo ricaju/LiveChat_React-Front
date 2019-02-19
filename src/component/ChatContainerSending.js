@@ -6,13 +6,13 @@ import { Container, Row, Col } from 'reactstrap';
 class ChatContainerSending extends Component {
 	render() {
 		return (
-			<Container>						{/* Divading 'chat container' and form for 'sending messages' in two row */}
-				<Row className="h-50">
+			<Container className="">						{/* Divading 'chat container' and form for 'sending messages' in two row */}
+				<Row className="">
 					<Col>
 						<ChatContainer/>
 					</Col>
 				</Row>
-				<Row >
+				<Row className="" >
 					<Col>
 						<SendingMessages/>
 					</Col>
