@@ -11,9 +11,8 @@ class Login extends Component {
   	this.state = {
   		username: '',
   		password: '',
-      usernameValid: "",
-      passwordValid: " "
-
+      usernameValid: '',
+      passwordValid: '',
   	}
 	};
 
@@ -44,9 +43,8 @@ class Login extends Component {
 
 	handleSubmit = async (e) => {
     e.preventDefault();
-    const check = this.checkValid();    
-    if(!check) {
-      console.log("jok");    
+    const check = await this.checkValid();    
+    if(!check) {  
     }
     else {
       var token = await this.props.mutate({
@@ -55,8 +53,18 @@ class Login extends Component {
           password : this.state.password
         },
       });
-      localStorage.setItem('jwt', JSON.stringify(token));
-      return (<Redirect to='/ChatContainerSending'/>);
+      if (JSON.stringify(token) === '{"data":{"login":"There is no user with that username"}}') {
+        var usernameValid = "There is no user with that username";
+        this.setState({ usernameValid })
+      }
+      else if (JSON.stringify(token) === '{"data":{"login":"Incorrect password"}}') {
+        var passwordValid = 'Incorrect password';
+        this.setState({ passwordValid })
+      }
+      else {
+        localStorage.setItem('jwt', JSON.stringify(token));
+        return (<Redirect to='/ChatContainerSending'/>);
+      }
     }
 
 
