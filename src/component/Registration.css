@@ -1,4 +1,9 @@
 
+#bc-form{
+	background-color: rgba(0,0,0,0.4);
+	border-radius: 10%;
+}
+
 #bc-reg{
 	padding-top: 5vh;
 	height:  70vh;
@@ -10,12 +15,9 @@
 	font-weight: bold;
 	color: white;
 	/*border-radius: 10%;*/
-	
-
-
-	
 }
-/*#button{
+
+#button{
 	background-color: transparent;
 	border: 2px solid #1F2833;
 	
@@ -34,13 +36,3 @@
 	border: 2px solid #66FCF1;
 
 }
-
-/*#reg-info {
-	display: flex;
-	/*justify-content: center;*/
-	/*align-items: center;
-	/*height: 100vh;*/
-	/*margin-left: 350px;*/
-   /* margin-left: auto;
-    padding-left: 750px;
-}*/

@@ -4,6 +4,9 @@ import App from './conteiners/App';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 import Sidebar from './component/Sidebar/Sidebar';
+/*import ChatContainerSending from './component/ChatContainerSending';*/
+/*import ChatContainer from './component/ChatContainer';*/
+
 
 ReactDOM.render(<Sidebar />, document.getElementById('root'));
 

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {Button} from 'reactstrap';
 import {Form, FormGroup, Label, Input} from 'reactstrap';
 import './Registration.css';
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
 
 
 class Registration extends Component {
@@ -31,31 +33,39 @@ class Registration extends Component {
   	if(this.state.password.length < 5) {
   		passwordValid = "Password needs to have more than 5 characters";
   	}
-
   	if(this.state.password !== this.state.confirmPassword) {
   		confirmPasswordValid = "Password and confirm password don't match!";
   	}
-
  	if (usernameValid || passwordValid || confirmPasswordValid) {   //setstejtanje upozorenja
  		this.setState({ usernameValid, passwordValid, confirmPasswordValid });
- 		return false;
  	}
+  else {
+    this.setState({ usernameValid, passwordValid, confirmPasswordValid });
+    return true;
   }
+}
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
   };
 
-  handleSubmit = (e) => {    
+  handleSubmit = async (e) => {    
     e.preventDefault();
     const check = this.checkValid();    
     if(!check) {
-    	console.log("jedna od formi je prazna"); //test    
+    	console.log("jok");    
     }
-    console.log('dodali smo username:' + this.state.username); //test 
+    else {
+      var token = await this.props.mutate({
+        variables: {
+          username : this.state.username,
+          email : this.state.email,
+          password : this.state.password
+        },
+      });
+      localStorage.setItem('jwt', JSON.stringify(token));
+    }
   };
-
-
 
   render() {
     return (
@@ -124,5 +134,10 @@ class Registration extends Component {
   }
 }
 
+const registerMutation = gql`
+  mutation register($username: String!, $password: String!, $email: String!) {
+    register(username : $username, password : $password, email : $email)
+  }
+`;
 
-export default Registration;
+export default graphql(registerMutation)(Registration);
