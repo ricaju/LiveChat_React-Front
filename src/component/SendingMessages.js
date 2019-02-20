@@ -3,7 +3,7 @@ import {Form, Input, Button, Container} from 'reactstrap';
 import './SendingMessages.css';
 //sending date?
 
-const MUTATION_FOR_NEW_MESSAGES= gql` 
+/*const MUTATION_FOR_NEW_MESSAGES= gql` 
   mutation mutationForNewMessages($content: String!, $from: String!) {
     createMessage(content: $content, from: $from) {
       id
@@ -12,7 +12,7 @@ const MUTATION_FOR_NEW_MESSAGES= gql`
       content
     }
   }
-  `;
+  `;*/
 
 class SendingMessages extends Component {
 	constructor(props) {
