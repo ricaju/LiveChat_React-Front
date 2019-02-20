@@ -6,6 +6,7 @@ const ChatBox = ( {message} ) => {
 			<div>		{/* set conteiner for sender and messages?*/}
 				<h4>{/*{message.from}*/} poruka od IVONE</h4>
 				<p>{/*{message.content}*/} ivonina poruka</p>
+
 			</div>
 		</div>
 		);

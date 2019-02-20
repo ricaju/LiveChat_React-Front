@@ -13,11 +13,34 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import {SubscriptionClient} from 'subscriptions-transport-ws';
+import { HttpLink } from "apollo-link-http";
+import { split } from 'apollo-client-preset'
+import { WebSocketLink } from 'apollo-link-ws'
+import { getMainDefinition } from 'apollo-utilities'
+
+
+const wsLink = new WebSocketLink({
+  uri: 'ws://localhost:4000/subscriptions',
+  options: {
+    reconnect: true
+  }
+})
+
+const httpLink = new HttpLink({ uri: 'http://localhost:4000/graphql' })
+
+const link = split(
+  ({query}) => {
+    const { kind, operation } = getMainDefinition(query)
+    return kind === 'OperationDefinition' && operation === 'subscription'
+  },
+  wsLink,
+  httpLink,
+)
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql"
-});
-
+  link,
+  cache: new InMemoryCache()
+})
 
 const particleOptions= {
       particles: {
@@ -40,16 +63,18 @@ class App extends Component {
     this.state = {
       login: true,
       registration: false,
+      container: true,
       redirect: false,
     }
   }
 
-  handeLog = () => {
+  handleLog = () => {
     this.setState({
       login: true,
       registration: false
-    });
+    })
   }
+
   handleReg = () => {
     this.setState({
       login: false,
@@ -57,22 +82,13 @@ class App extends Component {
     })
   }
 
-  handleTriger = () => {
-  this.setState({
-    redirect: true
-  })
-
-    const WSClient = new SubscriptionClient(`ws://localhost:4000/subscriptions`, {
-      reconnect: true,
-      connectionParams: {
-      }
-    });
-
-    const GraphQLClient = new ApolloClient({
-      link: WSClient,
-      cache: new InMemoryCache()
-    });
+  handleTriger = async () => {
+    this.setState({
+      redirect: true,
+    })
   }
+
+
 
   render() {
     if(this.state.redirect){
