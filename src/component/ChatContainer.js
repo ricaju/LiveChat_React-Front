@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import ChatBox from './ChatBox';
+
 import './ChatContainer.css';
+
+/*import { Container, Row, Col } from 'reactstrap';*/
+
 
 /*const CHAT_HISTORY = gql`
 	query AllChatsQuery {
@@ -19,6 +23,7 @@ class ChatContainer extends Component {
 	render() {
 		//const chatHistory = this.props.AllChatsQuery.chatHistory || []  // storing chat history in "chatHistory" or empty string (if there's no chat)
 		return(
+
 			<div className="wrapper">
 					<div className='rows'>
 						<aside className="aside aside-1">Aside 1</aside>
@@ -35,6 +40,7 @@ class ChatContainer extends Component {
 						input
 						</div>
 					</div>
+
 			</div>
 			);
 		}
