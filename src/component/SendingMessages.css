@@ -4,19 +4,28 @@
    align-content: flex-end;
    justify-content: center;
    flex-flow: column wrap;
-
-	z-index: 1;
+	
 }
+
+
 
 #btn1 {
 	margin-bottom: 15px;
 	background: transparent;
 	border: solid 1px #45A29E;
 }
+#btn1:hover {
+	background: #45A29E;
+	border: solid 1px #45A29E;
+}
 
 #btn2 {
 	margin-bottom:  15px;
 	background: transparent;
+	border: solid 1px #45A29E;
+}
+#btn2:hover {
+	background: #45A29E;
 	border: solid 1px #45A29E;
 }
 
@@ -26,9 +35,8 @@
 	border: solid 1px #45A29E;
 
 }
-
-#btn1 #btn2 #btn3 : hover {
-	background-color: #45A29E;
+#btn3:hover {
+	background: #45A29E;
 	border: solid 1px #45A29E;
-
 }
+

@@ -40,11 +40,11 @@ class SendingMessages extends Component {
 	render() {
 		return(
 			<div className="d-flex">
-				<Container className="p-2 col-6">
+				<Container className="p-2 m col-6">
 					<Form>
 						<Input
 							type="textarea"
-							style={{resize: "none", width: "650px", height: "200px"}}
+							style={{resize: "none", width: "850px", height: "190px"}}
 							name="text"
 							id="message"
 							placeholder="Enter your message(s)"
@@ -54,15 +54,15 @@ class SendingMessages extends Component {
 						/>
 					</Form>					
 				</Container>
-				<Container className=" p-2" id= 'btns'>
+				<Container className=" p-2" className= 'btn-all' id= 'btns'>
 					<Button id='btn1' 
 						onClick={this.sendingMessage}
 						>Send
 					</Button>
-					<Button id ='btn2'
+					<Button className= 'btn-all' id ='btn2'
 						>Emoji
 					</Button>
-					<Button id= 'btn3'
+					<Button  className= 'btn-all' id= 'btn3'
 						>Gif
 					</Button>
 
