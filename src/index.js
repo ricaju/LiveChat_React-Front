@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './conteiners/App';
-import ChatContainer from './component/ChatContainer';
 import * as serviceWorker from './serviceWorker';
-//import './index.css';
+import './index.css';
+import Sidebar from './component/Sidebar/Sidebar';
+/*import ChatContainerSending from './component/ChatContainerSending';*/
+/*import ChatContainer from './component/ChatContainer';*/
+
 
 ReactDOM.render(<App/>, document.getElementById('root'));
 
