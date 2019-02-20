@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
-import ChatBox from './ChatBox';
-import { Container, Row, Col } from 'reactstrap';
+import { Container } from 'reactstrap';
+import ChatBox from './ChatBox'
 
 /*const CHAT_HISTORY = gql`
 	query AllChatsQuery {
@@ -23,8 +21,7 @@ class ChatContainer extends Component {
 				<Container className="bg-light p-3">
 					<div>
 						test TEST TEST TEST
-						dsfdsfdsgdsg
-						fsgdggf
+						<ChatBox/>
 					 	{/*{chatHistory.map(message => (                          //looping through chatHistory and showing it in ChatBox component
 							<ChatBox key={message.id} message={message} />
 						))}*/}

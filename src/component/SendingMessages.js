@@ -1,19 +1,6 @@
 import React, { Component }  from 'react';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
 import {Form, Input, Button, Container} from 'reactstrap'; 
 
-//sending date?
-const MUTATION_FOR_NEW_MESSAGES= gql` 
-  mutation mutationForNewMessages($content: String!, $from: String!) {
-    createMessage(content: $content, from: $from) {
-      id
-      sentAt                                        
-      from
-      content
-    }
-  }
-  `;
 
 class SendingMessages extends Component {
 	constructor(props) {

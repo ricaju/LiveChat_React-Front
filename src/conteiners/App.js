@@ -4,20 +4,41 @@ import Particles from 'react-particles-js';
 import Login from '../component/Login';
 import Registration from '../component/Registration';
 import ChatContainerSending from '../component/ChatContainerSending';
-import {PrivateRoute} from '../component/PrivateRoute';
-import ChatContainer from '../component/ChatContainer';
+import { PrivateRoute } from '../component/PrivateRoute';
 import './App.css';
 import Logo from '../component/Logo/Logo.js';
 import { Container, Row, Col, Button } from 'reactstrap';
-import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
-import ApolloClient from "apollo-boost";
+import { BrowserRouter as Router, Redirect} from "react-router-dom";
+import { ApolloClient } from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import {SubscriptionClient} from 'subscriptions-transport-ws';
+import { HttpLink } from "apollo-link-http";
+import { split } from 'apollo-client-preset'
+import { WebSocketLink } from 'apollo-link-ws'
+import { getMainDefinition } from 'apollo-utilities'
+
+const wsLink = new WebSocketLink({
+  uri: 'ws://localhost:4000/subscriptions',
+  options: {
+    reconnect: true
+  }
+})
+
+const httpLink = new HttpLink({ uri: 'http://localhost:4000/graphql' })
+
+const link = split(
+  ({query}) => {
+    const { kind, operation } = getMainDefinition(query)
+    return kind === 'OperationDefinition' && operation === 'subscription'
+  },
+  wsLink,
+  httpLink,
+)
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql"
-});
+  link,
+  cache: new InMemoryCache()
+})
 
 const particleOptions= {
       particles: {
@@ -51,6 +72,7 @@ class App extends Component {
       registration: false
     })
   }
+
   handleReg = () => {
     this.setState({
       login: false,
@@ -58,27 +80,10 @@ class App extends Component {
     })
   }
 
-  handleMainChat = () => {
+  handleTriger = async () => {
     this.setState({
-      container: false
+      redirect: true,
     })
-  }
-
-  handleTriger = () => {
-    this.setState({
-      redirect: true
-    })
-
-    const WSClient = new SubscriptionClient(`ws://localhost:4000/subscriptions`, {
-      reconnect: true,
-      connectionParams: {
-      }
-    });
-
-    const GraphQLClient = new ApolloClient({
-      link: WSClient,
-      cache: new InMemoryCache()
-    });
   }
 
 
@@ -88,15 +93,17 @@ class App extends Component {
       return(
       <Router>
         <div>
+        <ApolloProvider client={ client }>
           <Redirect to="/ChatContainerSending" />
           <PrivateRoute path="/ChatContainerSending" exact={true} component={ChatContainerSending} />
+        </ApolloProvider> 
         </div>
       </Router>)
     }
     else {
       return(
       <div>
-        <ApolloProvider client={client}>
+        <ApolloProvider client={ client }>
           <Particles className='particles' params={particleOptions} />
             {this.state.container ?                                     // testing Main
               <Container>
@@ -113,7 +120,6 @@ class App extends Component {
                 </Row>
               </Container> : null
             }
-
           </ApolloProvider>
       </div>
       );

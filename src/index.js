@@ -2,10 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './conteiners/App';
 import * as serviceWorker from './serviceWorker';
-import { ApolloProvider } from "react-apollo";
-import {SubscriptionClient} from 'subscriptions-transport-ws';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import ApolloClient from "apollo-boost";
 //import './index.css';
 
 
