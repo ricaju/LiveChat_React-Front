@@ -131,7 +131,12 @@ class Registration extends Component {
                   id="button"                   
                   >Submit</Button>
             </Form>
+
           </div>
+        
+
+      /*</div>
+      </div>*/
     );
   }
 }

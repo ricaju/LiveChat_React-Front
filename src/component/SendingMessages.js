@@ -1,9 +1,15 @@
 import React, { Component }  from 'react';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 import {Form, Input, Button, Container} from 'reactstrap'; 
 import './SendingMessages.css';
 //sending date?
+<<<<<<< HEAD
 
 /*const MUTATION_FOR_NEW_MESSAGES= gql` 
+=======
+const MUTATION_FOR_NEW_MESSAGES= gql` 
+>>>>>>> parent of 53faed7... Merge branch 'ukrasavanje' of https://github.com/ricaju/reactJS into ukrasavanje
   mutation mutationForNewMessages($content: String!, $from: String!) {
     createMessage(content: $content, from: $from) {
       id

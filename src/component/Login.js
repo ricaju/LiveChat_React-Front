@@ -3,6 +3,7 @@ import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import './Login.css';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
+import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
 
 class Login extends Component {
 	constructor(props) {
@@ -11,7 +12,7 @@ class Login extends Component {
   		username: '',
   		password: '',
       usernameValid: '',
-      passwordValid: ''
+      passwordValid: '',
   	}
 	};
 
