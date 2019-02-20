@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
-import ChatBox from './ChatBox';
-import { Container, Row, Col } from 'reactstrap';
+import { Container } from 'reactstrap';
+import ChatBox from './ChatBox'
 
 /*const CHAT_HISTORY = gql`
 	query AllChatsQuery {
