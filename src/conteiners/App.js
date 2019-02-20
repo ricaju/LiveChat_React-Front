@@ -76,7 +76,7 @@ class App extends Component {
         {this.state.container ?                                     // testing Main
           <Container>
             <Row>
-              <Col xs="6">  <Logo /> </Col>
+              <Col xs="6" className='left'>  <Logo /> </Col>
               <Col xs="6" >
               <Row className="red">
               <Button id='login' onClick={this.handeLog}>Login</Button>

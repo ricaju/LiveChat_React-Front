@@ -11,9 +11,12 @@
 	display: flex;
 	justify-content: center;
 	margin-top: 5vh;
+}
 
-
-
+@media(max-width: 440px) {
+	.left{
+		display: none;
+	}
 }
 
 #login{
