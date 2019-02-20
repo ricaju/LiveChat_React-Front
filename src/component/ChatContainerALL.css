@@ -1,10 +1,10 @@
 .wrapper{
 	color:white;
 	display: flex;  
-  	flex-flow: flex wrap;
+  flex-flow: flex wrap;
  	font-weight: bold;
-  	text-align: center;
-  	background: #C5C6C7;
+  text-align: center;
+  background: #C5C6C7;
 }
 .wrapper > * {
   flex: 1 100%;
@@ -19,6 +19,7 @@
 .aside-1 {
   background: #1F2833;
   height: 100vh;
+  border: solid 1px #45A29E;
 }
 
 .aside-2 {
@@ -40,6 +41,7 @@
 .container2{
 	background: lightpink;
 	height: 30vh;
+  border: solid 1px #45A29E;
 }
 
 @media all and (min-width: 450px) {

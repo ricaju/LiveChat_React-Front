@@ -8,7 +8,7 @@ import Sidebar from './component/Sidebar/Sidebar';
 /*import ChatContainer from './component/ChatContainer';*/
 
 
-ReactDOM.render(<Sidebar />, document.getElementById('root'));
+ReactDOM.render(<App/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

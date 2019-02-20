@@ -2,7 +2,7 @@ import React, { Component }  from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import {Form, Input, Button, Container} from 'reactstrap'; 
-
+import './SendingMessages.css';
 //sending date?
 const MUTATION_FOR_NEW_MESSAGES= gql` 
   mutation mutationForNewMessages($content: String!, $from: String!) {
@@ -44,7 +44,7 @@ class SendingMessages extends Component {
 					<Form>
 						<Input
 							type="textarea"
-							style={{resize: "none", width: "450px", height: "250px"}}
+							style={{resize: "none", width: "650px", height: "200px"}}
 							name="text"
 							id="message"
 							placeholder="Enter your message(s)"
@@ -54,18 +54,15 @@ class SendingMessages extends Component {
 						/>
 					</Form>					
 				</Container>
-				<Container className="col-6 p-2">
-					<Button 
-						color="primary" 
+				<Container className=" p-2" id= 'btns'>
+					<Button id='btn1' 
 						onClick={this.sendingMessage}
 						>Send
 					</Button>
-					<Button
-						color="secondary"
+					<Button id ='btn2'
 						>Emoji
 					</Button>
-					<Button
-						color="secondary"
+					<Button id= 'btn3'
 						>Gif
 					</Button>
 
