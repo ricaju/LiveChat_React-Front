@@ -3,13 +3,11 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import {Form, Input, Button, Container} from 'reactstrap'; 
 import './SendingMessages.css';
-//sending date?
-<<<<<<< HEAD
+import smileicon from './smileicon.png';
+import gificon from './gificon.png';
+
 
 /*const MUTATION_FOR_NEW_MESSAGES= gql` 
-=======
-const MUTATION_FOR_NEW_MESSAGES= gql` 
->>>>>>> parent of 53faed7... Merge branch 'ukrasavanje' of https://github.com/ricaju/reactJS into ukrasavanje
   mutation mutationForNewMessages($content: String!, $from: String!) {
     createMessage(content: $content, from: $from) {
       id
@@ -45,11 +43,11 @@ class SendingMessages extends Component {
 	render() {
 		return(
 			<div className="d-flex">
-				<Container className="p-2 m col-6">
+				<Container className="p-2 m col-10">
 					<Form>
 						<Input
 							type="textarea"
-							style={{resize: "none", width: "850px", height: "190px"}}
+							style={{maxwidth: "100%", boxsizing: "border-box", resize: "none", height: "25vh"}}
 							name="text"
 							id="message"
 							placeholder="Enter your message(s)"
@@ -59,16 +57,16 @@ class SendingMessages extends Component {
 						/>
 					</Form>					
 				</Container>
-				<Container className=" p-2" className= 'btn-all' id= 'btns'>
+				<Container className=" p-1 col-2" className= 'btn-all' /*id= 'btns'*/>
 					<Button id='btn1' 
 						onClick={this.sendingMessage}
 						>Send
 					</Button>
 					<Button className= 'btn-all' id ='btn2'
-						>Emoji
+						><img style={{height: 25, width: 25}} alt='smile' src={smileicon}/>
 					</Button>
 					<Button  className= 'btn-all' id= 'btn3'
-						>Gif
+						><img style={{height: 25, width: 25}} alt='smile' src={gificon}/>
 					</Button>
 
 				</Container>
