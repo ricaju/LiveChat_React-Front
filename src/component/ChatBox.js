@@ -1,25 +1,32 @@
 import React from 'react';
-import gql from 'graphql-tag';
-import Subscription from 'graphql-tag';
+import {gql ,Subscription} from 'graphql-tag';
 import { graphql } from 'react-apollo';
+import { Query } from 'react-apollo'
 
-const subscription = gql`
+/*const subscription = gql`
   subscription messageAdded($chatroomId: String!) {
     messageAdded(chatroomId: $chatroomId) {
     	text
     }
   }
-`;
+`; */
 
-const ChatBox = ( {message} ) => {
-	return(
-		<div>         {/* set conteiner for whole chat box?*/}
+const messages = gql` 
+	query messages($chatroomId: String){
+		messages(chatroomId:$chatroomId){
+		id
+		text
+		}
+	}
+`; 
+const ChatBox = ( {messages} ) => {
+	return(	
+		<div>     {/* set conteiner for whole chat box?*/}
 			<div>		{/* set conteiner for sender and messages?*/}
-				<h4>{/*{message.from}*/} poruka od IVONE</h4>
-				<p>{/*{message.content}*/} ivonina poruka</p>
+				<h4>{messages} </h4>
+				<p>{/*{message.content}*/} blablab</p>
 			</div>
-		</div>
-		);
-}
-
+		</div>	
+		)
+};
 export default ChatBox;
