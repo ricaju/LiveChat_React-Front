@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import gql  from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import { Query } from 'react-apollo'
@@ -12,15 +12,15 @@ import { Query } from 'react-apollo'
 `; */
 
 const messages = gql` 
-	query messages($chatroomId: String!){
-		messages(chatroomId:$chatroomId){
-		id
-		text
-		}
-	}
+	query{messages(chatroomId:"1") {
+	  id
+	  text
+	}}
 `; 
-
-const ChatBox = ( {messages} ) => {
+ 
+class ChatBox extends Component {
+	render() {
+		console.log(this.props)  //test
 	return (	
 		<div>     {/* set conteiner for whole chat box?*/}
 			<div>
@@ -30,7 +30,9 @@ const ChatBox = ( {messages} ) => {
 			</div>
 		</div>	
 		);
-
+}
 }
 
-export default ChatBox;
+
+
+export default graphql(messages)(ChatBox);
