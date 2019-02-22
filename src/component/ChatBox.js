@@ -19,13 +19,25 @@ const messages = gql`
 `; 
  
 class ChatBox extends Component {
+	displayMessages() {
+		let data = this.props.data;
+		if(data.loading){
+			return(<div> Loading messages...</div>);
+		} else {
+			return data.messages.map( message => {
+				return( <li key={message.id}> {message.text}</li>);
+
+			})
+
+		} 
+	}
 	render() {
 		console.log(this.props)  //test
 	return (	
 		<div>     {/* set conteiner for whole chat box?*/}
 			<div>
 						{/* set conteiner for sender and messages?*/}
-				<h4>{messages.text} </h4>
+				<h4>{this.displayMessages()} </h4>
 				<p>{/*{message.content}*/} blablab</p>
 			</div>
 		</div>	

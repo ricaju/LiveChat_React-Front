@@ -23,7 +23,6 @@ class ChatContainer extends Component {
 				<Container className=" p-3" >
 					<div>
 						<ChatBox/>
-						<ChatBox/>
 					 	{/*{chatHistory.map(message => (                          //looping through chatHistory and showing it in ChatBox component
 							<ChatBox key={message.id} message={message} />
 						))}*/}
