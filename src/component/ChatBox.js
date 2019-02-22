@@ -3,13 +3,13 @@ import gql  from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import { Query } from 'react-apollo';
 
-/*const subscription = gql`
+const subscription = gql`
   subscription messageAdded($chatroomId: String!) {
     messageAdded(chatroomId: $chatroomId) {
     	text
     }
   }
-`; */
+`; 
 
 const messages = gql` 
 	{
