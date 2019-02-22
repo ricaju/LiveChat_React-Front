@@ -37,6 +37,7 @@
     background: #1F2833;
     height: 70vh;
     border: solid 2px #45A29E;
+    overflow-y: scroll;
 }
 
 .container2{
