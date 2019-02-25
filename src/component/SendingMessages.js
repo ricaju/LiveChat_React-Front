@@ -23,7 +23,7 @@ class SendingMessages extends Component {
 		super(props);
 		this.state = {
 			text: "",
-			chatroomId: '1',
+			chatroomId: '1'
 			//UserId:
 		}
 	}
@@ -31,10 +31,15 @@ class SendingMessages extends Component {
 	sendingMessage = async (e) => {	
 	console.log(this.state.text)		//on pressing enter mutation content and sender (from)
 		if (e.key === 'Enter') {
+			const getToken = JSON.parse(localStorage.getItem('jwt'))
+
+			const token = getToken.data.login || getToken.data.register
+
 			await this.props.mutate({
 				variables: {
 					text: this.state.text, 
-					chatroomId: this.state.chatroomId
+					chatroomId: this.state.chatroomId,
+					token: token
 					}
 			});
 			this.setState({ text: "" })  // erasing content
@@ -81,9 +86,10 @@ class SendingMessages extends Component {
 }
 
 const addMessageMutation= gql` 
-  mutation addMessage($text: String!, $chatroomId: String!) {
-    addMessage(text: $text, chatroomId: $chatroomId) {
+  mutation addMessage($text: String!, $chatroomId: String!,$token: String!) {
+    addMessage(text: $text, chatroomId: $chatroomId, token: $token) {
     	text
+
     }
   }
 `;
