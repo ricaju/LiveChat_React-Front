@@ -6,7 +6,7 @@ class PrivateMessages extends Component {
 	render() {
 		return (
 			<div>
-				{this.props.TriggerToggle ? <div className="privateMessages">Private messages</div> : null} 
+				{this.props.TriggerToggle}
 				<p> TU SAM </p>
 			</div>
 			);
