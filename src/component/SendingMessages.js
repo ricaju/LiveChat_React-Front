@@ -22,20 +22,27 @@ class SendingMessages extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			content: "",
-			from: ""
+			text: "",
+			chatroomId: '1'
+			//UserId:
 		}
 	}
 
-	sendingMessage = async (e) => {			//on pressing enter mutation content and sender (from)
+	sendingMessage = async (e) => {	
+	console.log(this.state.text)		//on pressing enter mutation content and sender (from)
 		if (e.key === 'Enter') {
-			await this.props.mutationForNewMessages({
+			const getToken = JSON.parse(localStorage.getItem('jwt'))
+
+			const token = getToken.data.login || getToken.data.register
+
+			await this.props.mutate({
 				variables: {
-					content: this.state.content, 
-					from: this.state.from
+					text: this.state.text, 
+					chatroomId: this.state.chatroomId,
+					token: token
 					}
 			});
-			this.setState({ content: "" })  // erasing content
+			this.setState({ text: "" })  // erasing content
 		}
 	}
 
@@ -51,7 +58,7 @@ class SendingMessages extends Component {
 							name="text"
 							id="message"
 							placeholder="Enter your message(s)"
-							onChange={e => this.setState( {content: e.target.value} )}
+							onChange={e => this.setState( {text: e.target.value} )}
 							onKeyPress={this.sendingMessage}
 							
 						/>
@@ -78,4 +85,13 @@ class SendingMessages extends Component {
 
 }
 
-export default SendingMessages; // //need to export grapfql querry
+const addMessageMutation= gql` 
+  mutation addMessage($text: String!, $chatroomId: String!,$token: String!) {
+    addMessage(text: $text, chatroomId: $chatroomId, token: $token) {
+    	text
+
+    }
+  }
+`;
+
+export default graphql(addMessageMutation)(SendingMessages);

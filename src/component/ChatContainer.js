@@ -4,16 +4,6 @@ import gql from 'graphql-tag';
 import ChatBox from './ChatBox';
 import { Container, Row, Col } from 'reactstrap';
 
-/*const CHAT_HISTORY = gql`
-	query AllChatsQuery {
-	  chatHistory {
-	    id
-	    sentAt
-	    from
-	    content
-	  }
-	}
-`;*/
 
 class ChatContainer extends Component {
 	render() {
@@ -22,7 +12,6 @@ class ChatContainer extends Component {
 			<div className="d-flex">
 				<Container className=" p-3" >
 					<div>
-						<ChatBox/>
 						<ChatBox/>
 					 	{/*{chatHistory.map(message => (                          //looping through chatHistory and showing it in ChatBox component
 							<ChatBox key={message.id} message={message} />

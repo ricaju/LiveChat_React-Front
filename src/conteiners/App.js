@@ -9,15 +9,40 @@ import './App.css';
 import Logo from '../component/Logo/Logo.js';
 import { Container, Row, Col, Button } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
-import ApolloClient from "apollo-boost";
+import { ApolloClient } from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import {SubscriptionClient} from 'subscriptions-transport-ws';
+import { HttpLink } from "apollo-link-http";
+import { split } from 'apollo-client-preset'
+import { WebSocketLink } from 'apollo-link-ws'
+import { getMainDefinition } from 'apollo-utilities'
+
+const wsLink = new WebSocketLink({
+  uri: 'ws://localhost:4000/subscriptions',
+  options: {
+    reconnect: true
+  }
+})
+
+const httpLink = new HttpLink({
+  uri: 'http://localhost:4000/graphql'
+})
+
+const link = split(
+  ({query}) => {
+    const { kind, operation } = getMainDefinition(query);
+    return kind === 'OperationDefinition' && operation === 'subscription'
+  },
+  wsLink,
+  httpLink
+)
 
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql"
-});
+  link,
+  cache: new InMemoryCache()
+})
 
 
 const particleOptions= {
@@ -78,12 +103,14 @@ class App extends Component {
   render() {
     if(this.state.redirect){
       return(
-      <Router>
-        <div>
-          <Redirect to="/ChatContainerALL" />
-          <PrivateRoute path="/ChatContainerALL" exact={true} component={ChatContainerALL} />
-        </div>
-      </Router>)
+        <ApolloProvider client={client}>
+        <Router>
+          <div>
+            <Redirect to="/ChatContainerALL" />
+            <PrivateRoute path="/ChatContainerALL" exact={true} component={ChatContainerALL} />
+          </div>       
+        </Router>
+      </ApolloProvider>)
     }
     else {
       return(

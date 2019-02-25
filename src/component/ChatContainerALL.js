@@ -36,7 +36,7 @@ class ChatContainerALL extends Component {
 	  						<ChatContainer/>
 						</div>
 						<div className='container2'>
-						<SendingMessages/>
+							<SendingMessages/>
 						</div>
 					</div>
 
