@@ -89,11 +89,6 @@ class App extends Component {
       return(
         <div>
         <ApolloProvider client={client}>
-          <Router>
-            <div>
-               <PrivateRoute path="/ChatContainerALL" exact={true} component={ChatContainerALL} />
-            </div>
-          </Router>
         <Particles className='particles' params={particleOptions} />
             <Container>
               <Row>
