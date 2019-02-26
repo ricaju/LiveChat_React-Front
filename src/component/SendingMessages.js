@@ -29,7 +29,7 @@ class SendingMessages extends Component {
 	}
 
 	sendingMessage = async (e) => {	
-	console.log(this.state.text)		
+		console.log(this.state.text)	
 			const getToken = JSON.parse(localStorage.getItem('jwt'))
 
 			const token = getToken.data.login || getToken.data.register
@@ -42,6 +42,12 @@ class SendingMessages extends Component {
 					}
 			});
 			this.setState({ text: "" })  // erasing content
+	}
+
+	handleKeyPress = async (e) => {
+		if(e.key === "Enter") {
+			this.sendingMessage()
+	}
 	}
 
 
@@ -57,7 +63,7 @@ class SendingMessages extends Component {
 							id="message"
 							placeholder="Enter your message(s)"
 							onChange={e => this.setState( {text: e.target.value} )}
-							onKeyPress={this.sendingMessage}
+							onKeyPress={this.handleKeyPress}
 							
 						/>
 					</Form>					
