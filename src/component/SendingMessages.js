@@ -29,8 +29,7 @@ class SendingMessages extends Component {
 	}
 
 	sendingMessage = async (e) => {	
-	console.log(this.state.text)		//on pressing enter mutation content and sender (from)
-		if (e.key === 'Enter') {
+	console.log(this.state.text)		
 			const getToken = JSON.parse(localStorage.getItem('jwt'))
 
 			const token = getToken.data.login || getToken.data.register
@@ -43,7 +42,6 @@ class SendingMessages extends Component {
 					}
 			});
 			this.setState({ text: "" })  // erasing content
-		}
 	}
 
 
