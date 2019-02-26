@@ -12,7 +12,7 @@ class Login extends Component {
   		username: '',
   		password: '',
       usernameValid: '',
-      passwordValid: ''
+      passwordValid: '',
   	}
 	};
 
@@ -63,14 +63,13 @@ class Login extends Component {
       }
       else {
         localStorage.setItem('jwt', JSON.stringify(token));
-        this.props.trigerChat()
-        }
+        this.props.trigerChat();
       }
     }
+	};
 
-
-   render() {
-      return (
+ render() {
+    return (
       <div className="col-md-8" id='bc-login'>
         <Form onSubmit={e => this.handleSubmit(e)}>
           <FormGroup>
