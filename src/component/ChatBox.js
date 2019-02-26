@@ -3,7 +3,7 @@ import gql  from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import { Query, subscription } from 'react-apollo';
 
-const messageAddedSubscription = gql`
+/*const messageAddedSubscription = gql`
 	{
 		messageAdded(chatroomId: "1") {
 			id
@@ -11,7 +11,7 @@ const messageAddedSubscription = gql`
 			text
 		}
 	}
-`; 
+`; */
 
 const messages = gql` 
 	{
@@ -25,7 +25,7 @@ const messages = gql`
  
 class ChatBox extends Component {
 
-	componentDidlMount(){
+	/*componentWillMount(){
 		this.props.data.subscribeToMore({
 			document: messageAddedSubscription,
 			variables: {
@@ -41,7 +41,7 @@ class ChatBox extends Component {
 		}
 		}
 	})
-	};
+	};*/
 	render() {
 		return (
 			<Query query={messages}>

@@ -17,16 +17,28 @@ import { HttpLink } from "apollo-link-http";
 import { split } from 'apollo-client-preset'
 import { WebSocketLink } from 'apollo-link-ws'
 import { getMainDefinition } from 'apollo-utilities'
+import { setContext } from 'apollo-link-context';
+
+
+const httpLink = new HttpLink({
+  uri: 'http://localhost:4000/graphql'
+})
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('jwt');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+      }
+    }
+  });
 
 const wsLink = new WebSocketLink({
   uri: 'ws://localhost:4000/subscriptions',
   options: {
     reconnect: true
   }
-})
-
-const httpLink = new HttpLink({
-  uri: 'http://localhost:4000/graphql'
 })
 
 const link = split(
@@ -40,7 +52,7 @@ const link = split(
 
 
 const client = new ApolloClient({
-  link,
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache()
 })
 
