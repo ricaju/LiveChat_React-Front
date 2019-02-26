@@ -5,6 +5,7 @@ import {Form, Input, Button, Container} from 'reactstrap';
 import './SendingMessages.css';
 import smileicon from './smileicon.png';
 import gificon from './gificon.png';
+import { setContext } from 'apollo-link-context';
 
 
 /*const MUTATION_FOR_NEW_MESSAGES= gql` 
