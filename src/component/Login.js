@@ -63,14 +63,12 @@ class Login extends Component {
       }
       else {
         localStorage.setItem('jwt', JSON.stringify(token));
-        return (<Redirect to='/ChatContainerSending'/>);
+        this.props.trigerChat();
       }
     }
-
-
 	};
 
-   render() {
+ render() {
     return (
       <div className="col-md-8" id='bc-login'>
         <Form onSubmit={e => this.handleSubmit(e)}>

@@ -72,14 +72,12 @@ class Registration extends Component {
       }
       else {
         localStorage.setItem('jwt', JSON.stringify(token));
+        this.props.trigerChat()
       }
     }};
 
   render() {
-    return (
-      
-     /* <div className="container" id= 'reg-info'>           
-        <div className="columns">   */       
+    return (     
           <div className="col-md-8" id='bc-reg'>
             <Form onSubmit={e => this.handleSubmit(e)}>
                 <FormGroup>

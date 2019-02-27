@@ -1,16 +1,57 @@
-.chat {
-  color: white;
-  position: fixed;
-  padding: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 130px;
+/*#btns{
+	display: flex;
+   flex-direction: row;
+   align-content: flex-end;
+   justify-content: center;
+   flex-flow: column wrap;
+	
+}*/
+
+.btn-all{
+	display: flex;
+   flex-direction: row;
+   align-content: flex-end;
+   justify-content: center;
+   flex-flow: column wrap;
+   
 }
-.chat .input-field input,
-button {
-  border-color: #FFFFFF;
+
+#btn1 {
+	margin-bottom: 15px;
+	background: transparent;
+	border: solid 1px #45A29E;
+	
 }
-.chip {
-  font-style: italic;
+#btn1:hover {
+	background: #45A29E;
+	border: solid 1px #45A29E;
 }
+
+#btn2 {
+	margin-bottom:  15px;
+	background: transparent;
+	align-items: center;
+	border-radius: 50%;
+	border: none;
+	outline: none;
+
+}
+#btn2:focus {
+	outline:0 !important;
+	box-shadow: none;
+}
+
+#btn3 {
+
+	background: transparent;
+	align-items: center;
+	border-radius: 50%;
+	border: none;
+	outline: none;
+
+}
+#btn3:focus {
+	outline:0 !important;
+	box-shadow: none;
+}
+
