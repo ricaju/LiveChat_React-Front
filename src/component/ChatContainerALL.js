@@ -31,16 +31,14 @@ class ChatContainerALL extends Component {
 		})
 	}
 	}
-	render() {
-		console.log(this.state.toggle)
-	
+	render() {	
 		return(
 
 			<div className="wrapper">
 					<div className='rows'>
 						<aside className="aside aside-1"><Sidebar Hide={this.handleToggle}/> </aside>
 						{this.state.toggle ?
-	  					<aside className="aside aside-2" >Toggle private messages</aside> : <aside className="aside aside-2"> </aside>}
+	  					<aside className="aside aside-2" >Toggle private messages</aside> : null}
   					</div>
   					<div className='columns'>
 	  					<div className="container1">
