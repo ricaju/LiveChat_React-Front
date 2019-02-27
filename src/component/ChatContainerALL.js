@@ -29,7 +29,7 @@ class ChatContainerALL extends Component {
 			<div className="wrapper">
 					<div className='rows'>
 						<aside className="aside aside-1"><Sidebar/></aside>
-	  					<aside className="aside aside-2">Toggle private messages</aside>
+	  					<aside className="aside aside-2">PRIVATE MESSAGES</aside>
   					</div>
   					<div className='columns'>
 	  					<div className="container1">

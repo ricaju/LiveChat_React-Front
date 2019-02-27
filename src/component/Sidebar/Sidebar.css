@@ -17,6 +17,16 @@
 	
 	 
 }
+
+.privateMessages {
+
+    background-color: #C5C6C7;
+    width: 200px;
+    height: 100vh;
+    
+
+}
+
 .input{
 	display: flex;
  align-items: flex-end;
@@ -26,3 +36,4 @@
 	width: 300px;
  height: 200px;
 }
+

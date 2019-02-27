@@ -5,20 +5,7 @@ import {Form, Input, Button, Container} from 'reactstrap';
 import './SendingMessages.css';
 import smileicon from './smileicon.png';
 import gificon from './gificon.png';
-import { setContext } from 'apollo-link-context';
-import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
 
-
-/*const MUTATION_FOR_NEW_MESSAGES= gql` 
-  mutation mutationForNewMessages($content: String!, $from: String!) {
-    createMessage(content: $content, from: $from) {
-      id
-      sentAt                                        
-      from
-      content
-    }
-  }
-  `;*/
 
 class SendingMessages extends Component {
 	constructor(props) {
@@ -26,43 +13,25 @@ class SendingMessages extends Component {
 		this.state = {
 			text: "",
 			chatroomId: '1'
-			//UserId:
 		}
 	}
 
 	sendingMessage = async (e) => {	
-		console.log(this.state.text)	
+	console.log(this.state.text)		//on pressing enter mutation content and sender (from)
+		if (e.key === 'Enter') {
 			const getToken = JSON.parse(localStorage.getItem('jwt'))
-
+		
 			const token = getToken.data.login || getToken.data.register
-
-			if(token != null){           //not working
+		
 			await this.props.mutate({
 				variables: {
 					text: this.state.text, 
 					chatroomId: this.state.chatroomId,
 					token: token
 					}
-			})}
-			else {
-				console.log("nema tokena")
-				return(
-					<Router>
-						<div>
-							<Redirect to="localhost:3000" />
-							<Route path="localhost:3000"  />
-						</div>
-					</Router>
-			) 
-			}
-
+			});
 			this.setState({ text: "" })  // erasing content
-	}
-
-	handleKeyPress = async (e) => {
-		if(e.key === "Enter") {
-			this.sendingMessage()
-	}
+		}
 	}
 
 
@@ -78,7 +47,7 @@ class SendingMessages extends Component {
 							id="message"
 							placeholder="Enter your message(s)"
 							onChange={e => this.setState( {text: e.target.value} )}
-							onKeyPress={this.handleKeyPress}
+							onKeyPress={this.sendingMessage}
 							
 						/>
 					</Form>					
@@ -105,10 +74,9 @@ class SendingMessages extends Component {
 }
 
 const addMessageMutation= gql` 
-  mutation addMessage($text: String!, $chatroomId: String!,$token: String!) {
+  mutation addMessage($text: String!, $chatroomId: String!, $token: String!) {
     addMessage(text: $text, chatroomId: $chatroomId, token: $token) {
     	text
-
     }
   }
 `;

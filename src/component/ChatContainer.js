@@ -4,6 +4,16 @@ import gql from 'graphql-tag';
 import ChatBox from './ChatBox';
 import { Container, Row, Col } from 'reactstrap';
 
+/*const CHAT_HISTORY = gql`
+	query AllChatsQuery {
+	  chatHistory {
+	    id
+	    sentAt
+	    from
+	    content
+	  }
+	}
+`;*/
 
 class ChatContainer extends Component {
 	render() {

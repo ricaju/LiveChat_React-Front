@@ -55,3 +55,12 @@
 	box-shadow: none;
 }
 
+/*@media screen and (max-width: 1200px) {
+
+   .btn-all {
+     width: 25px;
+     height: 10vh;
+     flex-direction: row;
+    }
+  
+}*/

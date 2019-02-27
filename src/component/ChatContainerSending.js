@@ -3,8 +3,6 @@ import ChatContainer from './ChatContainer';
 import SendingMessages from './SendingMessages';
 import { Container, Row, Col } from 'reactstrap';
 
-
-
 class ChatContainerSending extends Component {
 	render() {
 		return (
