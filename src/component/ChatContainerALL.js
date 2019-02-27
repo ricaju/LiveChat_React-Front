@@ -7,29 +7,40 @@ import ChatContainer from './ChatContainer';
 import SendingMessages from './SendingMessages';
 import './ChatContainerALL.css';
 
-/*import { Container, Row, Col } from 'reactstrap';*/
 
-
-/*const CHAT_HISTORY = gql`
-	query AllChatsQuery {
-	  chatHistory {
-	    id
-	    sentAt
-	    from
-	    content
-	  }
-	}
-`;*/
 
 class ChatContainerALL extends Component {
+
+	constructor(props) {
+	    super(props);
+	    this.state = {
+	      toggle: true,
+	    }
+	  }
+
+
+	handleToggle = () => {
+		if(!this.state.toggle){
+			this.setState({
+				toggle: true
+			})}
+		else{
+			this.setState({
+				toggle: false,
+			
+		})
+	}
+	}
 	render() {
-		//const chatHistory = this.props.AllChatsQuery.chatHistory || []  // storing chat history in "chatHistory" or empty string (if there's no chat)
+		console.log(this.state.toggle)
+	
 		return(
 
 			<div className="wrapper">
 					<div className='rows'>
-						<aside className="aside aside-1"><Sidebar/></aside>
-	  					<aside className="aside aside-2">Toggle private messages</aside>
+						<aside className="aside aside-1"><Sidebar Hide={this.handleToggle}/> </aside>
+						{this.state.toggle ?
+	  					<aside className="aside aside-2" >Toggle private messages</aside> : <aside className="aside aside-2"> </aside>}
   					</div>
   					<div className='columns'>
 	  					<div className="container1">

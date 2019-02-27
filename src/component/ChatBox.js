@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import gql  from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import { Query, subscription } from 'react-apollo';
+import './ChatBox.css';
 
-/*const messageAddedSubscription = gql`
-	{
+const messageAddedSubscription = gql`
+	subscription{
 		messageAdded(chatroomId: "1") {
 			id
 			username
 			text
 		}
 	}
-`; */
+`; 
 
 const messages = gql` 
-	{
+	query{
 	messages(chatroomId: "1") {
 		id
 		username
@@ -25,7 +26,7 @@ const messages = gql`
  
 class ChatBox extends Component {
 
-	/*componentWillMount(){
+	componentWillMount(){
 		this.props.data.subscribeToMore({
 			document: messageAddedSubscription,
 			variables: {
@@ -41,7 +42,7 @@ class ChatBox extends Component {
 		}
 		}
 	})
-	};*/
+	};
 	render() {
 		return (
 			<Query query={messages}>
@@ -53,7 +54,11 @@ class ChatBox extends Component {
          	return (
 				<div>     {/* set conteiner for whole chat box?*/}
 					<div>							{/* set conteiner for sender and messages?*/}
-					{data.messages.map( message =>  <li key={message.id}>{message.username} {message.text}</li> ) }
+					{data.messages.map( message =>  
+						<li className='listItems' key={message.id}>
+						<span className='userName'>{message.username}</span> 
+						<span className='messages'>{message.text}</span>
+						</li> ) }
 					</div>
 				</div>	
 				);

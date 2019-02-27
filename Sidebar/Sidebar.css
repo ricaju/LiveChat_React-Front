@@ -11,12 +11,22 @@
 }
 #button1{
 	margin-top: 20px;
-	background: #45A29E;
+	;
 }
 .groups {
 	
-	 
+	 background-color: #0B0C10;
 }
+
+.privateMessages {
+
+    background-color: #C5C6C7;
+    width: 200px;
+    height: 100vh;
+    
+
+}
+
 .input{
 	display: flex;
  align-items: flex-end;
