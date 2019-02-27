@@ -6,7 +6,6 @@ import './SendingMessages.css';
 import smileicon from './smileicon.png';
 import gificon from './gificon.png';
 import { setContext } from 'apollo-link-context';
-import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
 
 
 /*const MUTATION_FOR_NEW_MESSAGES= gql` 
@@ -36,26 +35,13 @@ class SendingMessages extends Component {
 
 			const token = getToken.data.login || getToken.data.register
 
-			if(token != null){           //not working
 			await this.props.mutate({
 				variables: {
 					text: this.state.text, 
 					chatroomId: this.state.chatroomId,
 					token: token
 					}
-			})}
-			else {
-				console.log("nema tokena")
-				return(
-					<Router>
-						<div>
-							<Redirect to="localhost:3000" />
-							<Route path="localhost:3000"  />
-						</div>
-					</Router>
-			) 
-			}
-
+			});
 			this.setState({ text: "" })  // erasing content
 	}
 
