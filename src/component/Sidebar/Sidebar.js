@@ -13,15 +13,11 @@ import '../ChatContainerALL.css';
 class Sidebar extends Component {
 	
 
-
-	render() {
-		return(
-		<div className="d-flex justify-content-start" id='cont'>
-			<div className="groups">
-				<ButtonGroup vertical>
-				 {/*<Button onClick={this.handleClick}>
-       				{this.state.isToggleOn ? 'ON' : 'OFF'}
-     			 </Button>*/}
+render() {
+	return(
+	<div className="d-flex justify-content-start" id='cont'>
+		<div className="groups">
+			<ButtonGroup vertical>
 				  <Button className="Buttoni" color="success" onClick={this.props.Hide}>
 				  			<img className='imgbuttoni'  alt='messagesicon' src={messagesicon}/>
 				  			PRIVATE MESSAGES
@@ -40,15 +36,10 @@ class Sidebar extends Component {
 					</Button>
 				</ButtonGroup>
 			</div>
-			<div>
-
-			</div>	
-
 	    </div>	
-	);}
-  
-
+	);
 }
-	
+}
+  
 
 export default Sidebar;
