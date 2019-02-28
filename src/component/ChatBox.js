@@ -24,6 +24,7 @@ const messagesQuery = gql`
 		username
 		text
 		createdAt
+
 	}
 }
 `;

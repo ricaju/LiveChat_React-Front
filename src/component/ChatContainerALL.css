@@ -1,9 +1,9 @@
 .wrapper{
-	color:white;
-	display: flex;  
+  
+  display: flex;  
   flex-flow: flex wrap;
- 	font-weight: bold;
-  text-align: center;
+  font-weight: bold;
+  text-align: left;
   
 }
 .wrapper > * {
@@ -11,10 +11,10 @@
 }
 
 .rows {
-	flex-direction: row;
-	display: flex;
-	min-width: 0;
-	flex: 1;
+  flex-direction: row;
+  display: flex;
+  min-width: 0;
+  flex: 1;
 }
 .aside-1 {
   background: #1F2833;
@@ -29,9 +29,9 @@
   height: 100vh;
 }
 .columns{
-	flex-direction: column;
-	display: flex;	
-	flex: 2;
+  flex-direction: column;
+  display: flex;  
+  flex: 2;
 }
 .container1 {
     background: #1F2833;
@@ -40,9 +40,10 @@
     overflow-y: scroll;
 }
 
+
 .container2{
-	background: #1F2833;
-	height: 30vh;
+  background: #1F2833;
+  height: 30vh;
   border: solid 1px #45A29E;
 }
 
@@ -68,15 +69,35 @@
   background: #45A29E;
   border: solid 2px #66FCF1;
 }*/
-@media all and (min-width: 450px) {
+
+   .Buttoni {
+     width: 105px;
+     height: 20vh;
+    }
+  .imgbuttoni{
+    width: 90px;
+    height: 90px;
+  }
+
   .aside-1 { flex: 0.5 0 0; }
   .aside-2 { flex: 1.2 0 0; }
-}
 
-@media all and (min-width: 800px) {
-  .container1    { flex: 5 0px; }
+.container1    { flex: 2 0px; }
   .aside-1 { order: 1; } 
   .aside-2   { order: 2; }
   .container1 { order: 3; }
   .container2 { order: 4; }
+
+@media screen and (max-width: 450px) {
+   .Buttoni {
+    font-size: 10px;
+     width: 60px;
+     height: 20vh;
+    }
+  .imgbuttoni{
+    width: 40px;
+    height: 40px;
+  }
+  .aside-1 { flex: 0.5 0 0; }
+  .aside-2 { flex: 1.2 0 0; }
 }
